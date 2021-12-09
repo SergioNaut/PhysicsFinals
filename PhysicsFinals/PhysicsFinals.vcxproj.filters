@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{b50f5f99-cc99-4462-9c25-9b4abd0da78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{4461e0cf-3879-48a1-96be-8f7aa9c692c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{0d8a57a7-2ba4-4d67-909b-0ec2541b4c4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\geometry">
+      <UniqueIdentifier>{002d523c-61ef-483e-9443-e1abde7145e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Physics">
+      <UniqueIdentifier>{fe8d2b42-4363-41a1-958d-5d755d363c5b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Assets\shaders\LitShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Assets\shaders\LitShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Assets\shaders\SimpleShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Assets\shaders\SimpleShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="global.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="extern_includes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="cTimer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleFountainEntity.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameTimer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="cEntity.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="tests.h">
+      <Filter>include\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticle.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleContact.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleContactResolver.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleForceRegistry.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleWorld.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cProjectile.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="iParticleContactGenerator.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="iParticleForceGenerator.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="particle_constraints.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="particle_contact_generators.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="particle_force_generators.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
