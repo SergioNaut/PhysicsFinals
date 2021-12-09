@@ -43,4 +43,6 @@ namespace nPhysics
 
 		virtual size_t AddContact(cParticleContact* contact, size_t limit, std::vector<cParticle*>& particles) const;
 	};
+
+	//TODO: ParticleCable/Rope
 }

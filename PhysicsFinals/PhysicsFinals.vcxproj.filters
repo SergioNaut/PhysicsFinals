@@ -28,6 +28,18 @@
     <Filter Include="include\Physics">
       <UniqueIdentifier>{fe8d2b42-4363-41a1-958d-5d755d363c5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\input">
+      <UniqueIdentifier>{c8cbcfbb-d50b-4549-8a8b-47c649df5c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics">
+      <UniqueIdentifier>{bfa06688-b62f-4c4d-886a-16a5cfd38a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\camera">
+      <UniqueIdentifier>{f202eab0-66bb-4d87-9100-556df0f2c959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\load">
+      <UniqueIdentifier>{21ac0135-9db5-48ae-9d4e-e83dc74016f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\shaders\LitShader.frag">
@@ -97,6 +109,42 @@
     </ClInclude>
     <ClInclude Include="particle_force_generators.h">
       <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="random_helpers.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cInputManager.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="cKey.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input_keys.h">
+      <Filter>include\input</Filter>
+    </ClInclude>
+    <ClInclude Include="Assimp.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="cImageFile.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadCubeMapFromFiles.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadSingleMeshFromFile.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadTextureFromFile.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="sMeshLoadingInfo.h">
+      <Filter>include\Graphics\load</Filter>
+    </ClInclude>
+    <ClInclude Include="c3rdPersonCamera.h">
+      <Filter>include\Graphics\camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

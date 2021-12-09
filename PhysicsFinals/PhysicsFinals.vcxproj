@@ -151,8 +151,13 @@
     <None Include="..\Assets\shaders\SimpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assimp.h" />
+    <ClInclude Include="c3rdPersonCamera.h" />
     <ClInclude Include="cEntity.h" />
     <ClInclude Include="cGameTimer.h" />
+    <ClInclude Include="cImageFile.h" />
+    <ClInclude Include="cInputManager.h" />
+    <ClInclude Include="cKey.h" />
     <ClInclude Include="cParticle.h" />
     <ClInclude Include="cParticleContact.h" />
     <ClInclude Include="cParticleContactResolver.h" />
@@ -163,11 +168,18 @@
     <ClInclude Include="cTimer.h" />
     <ClInclude Include="extern_includes.h" />
     <ClInclude Include="global.h" />
+    <ClInclude Include="input.h" />
+    <ClInclude Include="input_keys.h" />
     <ClInclude Include="iParticleContactGenerator.h" />
     <ClInclude Include="iParticleForceGenerator.h" />
+    <ClInclude Include="LoadCubeMapFromFiles.h" />
+    <ClInclude Include="LoadSingleMeshFromFile.h" />
+    <ClInclude Include="LoadTextureFromFile.h" />
     <ClInclude Include="particle_constraints.h" />
     <ClInclude Include="particle_contact_generators.h" />
     <ClInclude Include="particle_force_generators.h" />
+    <ClInclude Include="random_helpers.h" />
+    <ClInclude Include="sMeshLoadingInfo.h" />
     <ClInclude Include="tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
