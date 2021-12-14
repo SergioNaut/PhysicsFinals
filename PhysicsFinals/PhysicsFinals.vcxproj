@@ -159,6 +159,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
     <None Include="..\Assets\shaders\SimpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cBoxObject.cpp" />
     <ClCompile Include="cParticle.cpp" />
     <ClCompile Include="cParticleConstraint.cpp" />
     <ClCompile Include="cParticleContact.cpp" />
@@ -166,6 +167,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
     <ClCompile Include="cParticleForceRegistry.cpp" />
     <ClCompile Include="cParticleRodConstraint.cpp" />
     <ClCompile Include="cParticleWorld.cpp" />
+    <ClCompile Include="globalSetup.cpp" />
     <ClCompile Include="graphics\c3rdPersonCamera.cpp" />
     <ClCompile Include="graphics\cBuffer.cpp" />
     <ClCompile Include="graphics\cCamera.cpp" />
@@ -191,6 +193,8 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
     <ClCompile Include="particle_force_generators.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cBoxObject.h" />
+    <ClInclude Include="cObject.h" />
     <ClInclude Include="cParticle.h" />
     <ClInclude Include="cParticleConstraint.h" />
     <ClInclude Include="cParticleContact.h" />
@@ -199,6 +203,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
     <ClInclude Include="cParticleRodConstraint.h" />
     <ClInclude Include="cParticleWorld.h" />
     <ClInclude Include="external_includes.h" />
+    <ClInclude Include="globalSetup.h" />
     <ClInclude Include="graphics\c3rdPersonCamera.h" />
     <ClInclude Include="graphics\cBuffer.h" />
     <ClInclude Include="graphics\cCamera.h" />

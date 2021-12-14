@@ -33,6 +33,9 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{4cf0d91c-e39c-4ae9-8050-8e08eb40bfad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Objects">
+      <UniqueIdentifier>{71b4b325-e3be-4971-ae47-c6acfe9a2cb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\shaders\LitShader.frag">
@@ -138,6 +141,12 @@
     </ClCompile>
     <ClCompile Include="cParticleRodConstraint.cpp">
       <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoxObject.cpp">
+      <Filter>include\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="globalSetup.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +266,15 @@
     </ClInclude>
     <ClInclude Include="cParticleRodConstraint.h">
       <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject.h">
+      <Filter>include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoxObject.h">
+      <Filter>include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="globalSetup.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
