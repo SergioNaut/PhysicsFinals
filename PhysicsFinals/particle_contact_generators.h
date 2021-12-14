@@ -26,7 +26,7 @@ namespace nPhysics
 		virtual size_t AddContact(cParticleContact* contact, size_t limit, std::vector<cParticle*>& particles) const;
 	};
 
-	//For harder marks
+	//TODO: Particle/Particle contact generator
 	class cSphereSphereContactGenerator : public iParticleContactGenerator
 	{
 	public:

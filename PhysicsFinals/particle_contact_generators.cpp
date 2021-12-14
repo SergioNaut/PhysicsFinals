@@ -38,7 +38,7 @@ namespace nPhysics
 				//contact->mPenetration = sphereRadius - distance /*particleDistance*/;
 				contact->mPenetration = newSphereRadius - particleDistance;
 				//Generic restitution for now
-				contact->mRestitution = 0.7f;
+				contact->mRestitution = 0.5f;
 				contact++;
 				numContactsCreated++;
 			}

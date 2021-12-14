@@ -15,9 +15,6 @@
     <Filter Include="include">
       <UniqueIdentifier>{4461e0cf-3879-48a1-96be-8f7aa9c692c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\geometry">
-      <UniqueIdentifier>{002d523c-61ef-483e-9443-e1abde7145e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\Physics">
       <UniqueIdentifier>{fe8d2b42-4363-41a1-958d-5d755d363c5b}</UniqueIdentifier>
     </Filter>
@@ -136,6 +133,12 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cParticleConstraint.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticleRodConstraint.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cParticle.h">
@@ -247,7 +250,13 @@
       <Filter>include\Graphics\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="external_includes.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleConstraint.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleRodConstraint.h">
+      <Filter>include\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -124,8 +124,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;OPENGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;OpenGL32.lib;assimp-vc142-mtd.lib;FreeImaged.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Debug\assimp-vc142-mtd.dll" "$(OutDir)assimp-vc142-mtd.dll"
+copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)FreeImaged.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,6 +147,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;glew32s.lib;OPENGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Debug\assimp-vc142-mtd.dll" "$(OutDir)assimp-vc142-mtd.dll"
+copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)FreeImaged.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\Assets\shaders\LitShader.frag" />
@@ -152,9 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cParticle.cpp" />
+    <ClCompile Include="cParticleConstraint.cpp" />
     <ClCompile Include="cParticleContact.cpp" />
     <ClCompile Include="cParticleContactResolver.cpp" />
     <ClCompile Include="cParticleForceRegistry.cpp" />
+    <ClCompile Include="cParticleRodConstraint.cpp" />
     <ClCompile Include="cParticleWorld.cpp" />
     <ClCompile Include="graphics\c3rdPersonCamera.cpp" />
     <ClCompile Include="graphics\cBuffer.cpp" />
@@ -182,9 +192,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cParticle.h" />
+    <ClInclude Include="cParticleConstraint.h" />
     <ClInclude Include="cParticleContact.h" />
     <ClInclude Include="cParticleContactResolver.h" />
     <ClInclude Include="cParticleForceRegistry.h" />
+    <ClInclude Include="cParticleRodConstraint.h" />
     <ClInclude Include="cParticleWorld.h" />
     <ClInclude Include="external_includes.h" />
     <ClInclude Include="graphics\c3rdPersonCamera.h" />

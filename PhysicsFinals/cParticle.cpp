@@ -1,4 +1,4 @@
-#include <physics/cParticle.h>
+#include <cParticle.h>
 
 float getRandom(float low, float high)
 {
@@ -127,7 +127,7 @@ namespace nPhysics
 		{
 			return;
 		}
-
+		//Using Euler's algorithm to integrate
 		mPosition += mVelocity * deltaTime;
 		mVelocity += (mAcceleration + mAppliedForce * mInverseMass) * deltaTime;
 

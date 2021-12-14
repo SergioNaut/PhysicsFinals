@@ -5,6 +5,7 @@
 
 namespace nInput
 {
+	//TODO: Set up more keys 
 	//Leaving Keys 2, 3 and 4 commented for possible use in the finals
 	namespace KeyCode
 	{	

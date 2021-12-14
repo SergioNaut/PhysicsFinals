@@ -72,7 +72,7 @@ int main()
 
 #pragma region Textures
 	// Loading textures to use with our meshes
-		//nGraphics::gTextureManager->Load("../Assets/skybox/tidepool", "skybox", true);
+	//nGraphics::gTextureManager->Load("../Assets/skybox/tidepool", "skybox", true);
 	nGraphics::gTextureManager->Load("../Assets/WhiteSquare.bmp", "whiteSquare", false);
 	nGraphics::gTextureManager->Load("../Assets/stone_wall.bmp", "stone", false);
 	nGraphics::gTextureManager->Load("../Assets/grafitti.bmp", "grafitti", false);
@@ -146,10 +146,10 @@ int main()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
-		//glm::set(graphicsDef.Position, 40.0f, 1.0f, -40.0f);
-		//glm::set(graphicsDef.Scale, 80.0f, 8.0f, 1.0f);
-		glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
+		//glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
+		glm::set(graphicsDef.Position, 0.0f, 1.0f, -40.0f);
+		glm::set(graphicsDef.Scale, 40.0f, 20.0f, 1.0f);
+		//glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
 		wallGraphics1 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
@@ -158,10 +158,10 @@ int main()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		glm::set(graphicsDef.Position, -10.0f, 1.0f, 10.0f);
-		//glm::set(graphicsDef.Position, -35.0f, 1.0f, 40.0f);
-		//glm::set(graphicsDef.Scale, 80.0f, 8.0f, 1.0f);
-		glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
+		//glm::set(graphicsDef.Position, -10.0f, 1.0f, 10.0f);
+		glm::set(graphicsDef.Position, -35.0f, 1.0f, 40.0f);
+		glm::set(graphicsDef.Scale, 80.0f, 8.0f, 1.0f);
+		//glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
 		wallGraphics2 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
@@ -170,10 +170,10 @@ int main()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		glm::set(graphicsDef.Position, -10.0f, 1.0f, 10.0f);
-		//glm::set(graphicsDef.Position, -40.0f, 1.0f, 40.0f);
-		//glm::set(graphicsDef.Scale, 1.0f, 8.0f, 80.0f);
-		glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
+		//glm::set(graphicsDef.Position, -10.0f, 1.0f, 10.0f);
+		glm::set(graphicsDef.Position, -40.0f, 1.0f, 40.0f);
+		glm::set(graphicsDef.Scale, 1.0f, 8.0f, 80.0f);
+		//glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
 		wallGraphics3 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
@@ -182,14 +182,14 @@ int main()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
-		//glm::set(graphicsDef.Position, 40.0f, 1.0f, -40.0f);
-		//glm::set(graphicsDef.Scale, 1.0f, 8.0f,80.0f);
-		glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
+		//glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
+		glm::set(graphicsDef.Position, 40.0f, 1.0f, -40.0f);
+		glm::set(graphicsDef.Scale, 1.0f, 8.0f,80.0f);
+		//glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
 		wallGraphics4 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 
-	// Enter the main loop
+	//Calls the main loop
 	mainLoop();
 
 	// Clean up
@@ -265,15 +265,15 @@ void mainLoop()
 	world->AddContactContactGenerator(&particleContactGeneratorG);
 
 	//Left Wall
-	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorLeft(glm::vec3(1.0f, 0.f, 0.0f),/*-40.0f*/-10.0f, 1.0f);
+	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorLeft(glm::vec3(1.0f, 0.f, 0.0f),-40.0f, 1.0f);
 	world->AddContactContactGenerator(&particleContactGeneratorLeft);
 
 	//Right Wall
-	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorRight(glm::vec3(-1.0f, 0.f, 0.0f),/*-40.0f*/-10.0f, 1.0f);
+	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorRight(glm::vec3(-1.0f, 0.f, 0.0f),-40.0f, 1.0f);
 	world->AddContactContactGenerator(&particleContactGeneratorRight);
 
 	//Back Wall
-	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorBack(glm::vec3(0.0f, 0.f, -2.0f), /*-40.0f*/-10.0f, 1.0f);
+	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorBack(glm::vec3(0.0f, 0.f, -2.0f),-40.0f, 1.0f);
 	world->AddContactContactGenerator(&particleContactGeneratorBack);
 
 	//Roof - Nope
@@ -281,7 +281,7 @@ void mainLoop()
 	//world->AddContactContactGenerator(&particleContactGeneratorRoof);
 
 	//Front Wall
-	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorFront(glm::vec3(0.0f, 0.f, 1.0f),/*-40.0f*/-10.0f, 1.0f);
+	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorFront(glm::vec3(0.0f, 0.f, 1.0f),-40.0f, 1.0f);
 	world->AddContactContactGenerator(&particleContactGeneratorFront);
 #pragma endregion
 
