@@ -1,29 +1,34 @@
 #pragma once
-#include "extern_includes.h"
+#include <external_includes.h>
 
 namespace nPhysics
 {
 	class cParticle
 	{
 	private:
-		// Linear position of the particle in world space
+		// Position of the particle in the world
 		glm::vec3 mPosition;
-		// Linear velocity of the particle in world space
+		// Velocities of the particle in the world
 		glm::vec3 mVelocity;
-		// Linear acceleration of the particle in world space
+		// Acceleration of the particle in the world
 		glm::vec3 mAcceleration;
 		// Inverse mass
 		float mInverseMass;
 		// Externally applied forces accumulated during a time step
 		glm::vec3 mAppliedForce;
-		// Damping is applied to linear motion
-		// Required to remove energy added through numerical instability of integration
-		// Also generally used as an overall "friction" for the particle
+		
 		float mDamping;
-	protected:
+
+		//Use mIsAlive?
 		bool mIsAlive;
-		float mAge;
+
+		float sphereRadius;
+
+		//TODO: SetSphereRadius for particles
 	public:
+
+		float GetRadius();
+
 		cParticle(float mass, const glm::vec3& position);
 		virtual ~cParticle();
 
@@ -34,12 +39,8 @@ namespace nPhysics
 		void SetDamping(float damping);
 		float GetDamping() const;
 
-		float GetAge() const;
-
-		bool GetIsAlive() const;
-		void SetIsAlive(bool alive);
-
-		void SetMass(float mass);
+		//Added to change mass after particle was created
+		void SetMass(float newMass);
 		float GetMass() const;
 		float GetInverseMass() const;
 
@@ -57,12 +58,19 @@ namespace nPhysics
 		void GetAcceleration(glm::vec3& acceleration);
 		void SetAcceleration(const glm::vec3& acceleration);
 
+
 		void ApplyForce(const glm::vec3& force);
+
+		//Added Impulse
 		void ApplyImpulse(const glm::vec3& impulse);
 
 		void ClearAppliedForces();
 
-		virtual void Integrate(float deltaTime);
+		void Integrate(float deltaTime);
+
+		//Added isAlive Helpers
+		void SetIsAlive(bool isAlive);
+		bool GetIsAlive() const;
 
 	};
 }

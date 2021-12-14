@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Extern/rapidxml;$(SolutionDir)Extern/rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Extern/rapidxml;$(SolutionDir)Extern/rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(ProjectDir);$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Extern\FreeImage\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glfw\lib\$(Platform);$(SolutionDir)Extern\assimp\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glew\lib\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,36 +151,73 @@
     <None Include="..\Assets\shaders\SimpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Assimp.h" />
-    <ClInclude Include="c3rdPersonCamera.h" />
-    <ClInclude Include="cEntity.h" />
-    <ClInclude Include="cGameTimer.h" />
-    <ClInclude Include="cImageFile.h" />
-    <ClInclude Include="cInputManager.h" />
-    <ClInclude Include="cKey.h" />
+    <ClCompile Include="cParticle.cpp" />
+    <ClCompile Include="cParticleContact.cpp" />
+    <ClCompile Include="cParticleContactResolver.cpp" />
+    <ClCompile Include="cParticleForceRegistry.cpp" />
+    <ClCompile Include="cParticleWorld.cpp" />
+    <ClCompile Include="graphics\c3rdPersonCamera.cpp" />
+    <ClCompile Include="graphics\cBuffer.cpp" />
+    <ClCompile Include="graphics\cCamera.cpp" />
+    <ClCompile Include="graphics\cGraphicsComponent.cpp" />
+    <ClCompile Include="graphics\cMesh.cpp" />
+    <ClCompile Include="graphics\cMeshManager.cpp" />
+    <ClCompile Include="graphics\cTexture.cpp" />
+    <ClCompile Include="graphics\cTextureManager.cpp" />
+    <ClCompile Include="graphics\cVertex.cpp" />
+    <ClCompile Include="graphics\fileLoader\cImageFile.cpp" />
+    <ClCompile Include="graphics\fileLoader\LoadCubeMapFromFiles.cpp" />
+    <ClCompile Include="graphics\fileLoader\LoadSingleMeshFromFile.cpp" />
+    <ClCompile Include="graphics\fileLoader\LoadTextureFromFile.cpp" />
+    <ClCompile Include="graphics\graphics.cpp" />
+    <ClCompile Include="graphics\shaderbits\cLitShader.cpp" />
+    <ClCompile Include="graphics\shaderbits\cSimpleShader.cpp" />
+    <ClCompile Include="graphics\shaderbits\LoadShader.cpp" />
+    <ClCompile Include="input\cInputManager.cpp" />
+    <ClCompile Include="input\cKey.cpp" />
+    <ClCompile Include="input\input.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="particle_contact_generators.cpp" />
+    <ClCompile Include="particle_force_generators.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="cParticle.h" />
     <ClInclude Include="cParticleContact.h" />
     <ClInclude Include="cParticleContactResolver.h" />
     <ClInclude Include="cParticleForceRegistry.h" />
-    <ClInclude Include="cParticleFountainEntity.h" />
     <ClInclude Include="cParticleWorld.h" />
-    <ClInclude Include="cProjectile.h" />
-    <ClInclude Include="cTimer.h" />
-    <ClInclude Include="extern_includes.h" />
-    <ClInclude Include="global.h" />
-    <ClInclude Include="input.h" />
-    <ClInclude Include="input_keys.h" />
+    <ClInclude Include="external_includes.h" />
+    <ClInclude Include="graphics\c3rdPersonCamera.h" />
+    <ClInclude Include="graphics\cBuffer.h" />
+    <ClInclude Include="graphics\cCamera.h" />
+    <ClInclude Include="graphics\cGraphicsComponent.h" />
+    <ClInclude Include="graphics\cMesh.h" />
+    <ClInclude Include="graphics\cMeshManager.h" />
+    <ClInclude Include="graphics\cTexture.h" />
+    <ClInclude Include="graphics\cTextureManager.h" />
+    <ClInclude Include="graphics\cVertex.h" />
+    <ClInclude Include="graphics\fileLoader\Assimp.h" />
+    <ClInclude Include="graphics\fileLoader\cImageFile.h" />
+    <ClInclude Include="graphics\fileLoader\LoadCubeMapFromFiles.h" />
+    <ClInclude Include="graphics\fileLoader\LoadSingleMeshFromFile.h" />
+    <ClInclude Include="graphics\fileLoader\LoadTextureFromFile.h" />
+    <ClInclude Include="graphics\fileLoader\sMeshLoadingInfo.h" />
+    <ClInclude Include="graphics\graphics.h" />
+    <ClInclude Include="graphics\iCamera.h" />
+    <ClInclude Include="graphics\sBufferIds.h" />
+    <ClInclude Include="graphics\shaderbits\cLitShader.h" />
+    <ClInclude Include="graphics\shaderbits\cSimpleShader.h" />
+    <ClInclude Include="graphics\shaderbits\LoadShader.h" />
+    <ClInclude Include="graphics\shaderbits\shader_vars.h" />
+    <ClInclude Include="graphics\sTextureLoadingInfo.h" />
+    <ClInclude Include="input\cInputManager.h" />
+    <ClInclude Include="input\cKey.h" />
+    <ClInclude Include="input\input.h" />
+    <ClInclude Include="input\input_keys.h" />
     <ClInclude Include="iParticleContactGenerator.h" />
     <ClInclude Include="iParticleForceGenerator.h" />
-    <ClInclude Include="LoadCubeMapFromFiles.h" />
-    <ClInclude Include="LoadSingleMeshFromFile.h" />
-    <ClInclude Include="LoadTextureFromFile.h" />
-    <ClInclude Include="particle_constraints.h" />
     <ClInclude Include="particle_contact_generators.h" />
     <ClInclude Include="particle_force_generators.h" />
-    <ClInclude Include="random_helpers.h" />
-    <ClInclude Include="sMeshLoadingInfo.h" />
-    <ClInclude Include="tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

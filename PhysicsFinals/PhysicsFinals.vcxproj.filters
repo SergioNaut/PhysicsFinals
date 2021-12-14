@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -19,9 +15,6 @@
     <Filter Include="include">
       <UniqueIdentifier>{4461e0cf-3879-48a1-96be-8f7aa9c692c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{0d8a57a7-2ba4-4d67-909b-0ec2541b4c4b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\geometry">
       <UniqueIdentifier>{002d523c-61ef-483e-9443-e1abde7145e1}</UniqueIdentifier>
     </Filter>
@@ -34,11 +27,14 @@
     <Filter Include="include\Graphics">
       <UniqueIdentifier>{bfa06688-b62f-4c4d-886a-16a5cfd38a14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Graphics\camera">
-      <UniqueIdentifier>{f202eab0-66bb-4d87-9100-556df0f2c959}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\Graphics\load">
       <UniqueIdentifier>{21ac0135-9db5-48ae-9d4e-e83dc74016f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Shaders">
+      <UniqueIdentifier>{f202eab0-66bb-4d87-9100-556df0f2c959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4cf0d91c-e39c-4ae9-8050-8e08eb40bfad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -56,27 +52,92 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="global.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="extern_includes.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="cTimer.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="cParticleFountainEntity.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="cGameTimer.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="cEntity.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="tests.h">
-      <Filter>include\geometry</Filter>
-    </ClInclude>
+    <ClCompile Include="cParticle.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticleContact.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticleContactResolver.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticleForceRegistry.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticleWorld.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="particle_contact_generators.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="particle_force_generators.cpp">
+      <Filter>include\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="input\cInputManager.cpp">
+      <Filter>include\input</Filter>
+    </ClCompile>
+    <ClCompile Include="input\cKey.cpp">
+      <Filter>include\input</Filter>
+    </ClCompile>
+    <ClCompile Include="input\input.cpp">
+      <Filter>include\input</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\c3rdPersonCamera.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cBuffer.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cCamera.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cGraphicsComponent.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cMesh.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cMeshManager.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cTexture.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cTextureManager.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cVertex.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\graphics.cpp">
+      <Filter>include\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\fileLoader\cImageFile.cpp">
+      <Filter>include\Graphics\load</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\fileLoader\LoadCubeMapFromFiles.cpp">
+      <Filter>include\Graphics\load</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\fileLoader\LoadSingleMeshFromFile.cpp">
+      <Filter>include\Graphics\load</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\fileLoader\LoadTextureFromFile.cpp">
+      <Filter>include\Graphics\load</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaderbits\cLitShader.cpp">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaderbits\cSimpleShader.cpp">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\shaderbits\LoadShader.cpp">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="cParticle.h">
       <Filter>include\Physics</Filter>
     </ClInclude>
@@ -92,16 +153,10 @@
     <ClInclude Include="cParticleWorld.h">
       <Filter>include\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="cProjectile.h">
-      <Filter>include\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="iParticleContactGenerator.h">
       <Filter>include\Physics</Filter>
     </ClInclude>
     <ClInclude Include="iParticleForceGenerator.h">
-      <Filter>include\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="particle_constraints.h">
       <Filter>include\Physics</Filter>
     </ClInclude>
     <ClInclude Include="particle_contact_generators.h">
@@ -110,41 +165,89 @@
     <ClInclude Include="particle_force_generators.h">
       <Filter>include\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="random_helpers.h">
-      <Filter>include\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="cInputManager.h">
+    <ClInclude Include="input\cInputManager.h">
       <Filter>include\input</Filter>
     </ClInclude>
-    <ClInclude Include="cKey.h">
+    <ClInclude Include="input\cKey.h">
       <Filter>include\input</Filter>
     </ClInclude>
-    <ClInclude Include="input.h">
+    <ClInclude Include="input\input.h">
       <Filter>include\input</Filter>
     </ClInclude>
-    <ClInclude Include="input_keys.h">
+    <ClInclude Include="input\input_keys.h">
       <Filter>include\input</Filter>
     </ClInclude>
-    <ClInclude Include="Assimp.h">
+    <ClInclude Include="graphics\c3rdPersonCamera.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cBuffer.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cCamera.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cGraphicsComponent.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cMesh.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cMeshManager.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cTexture.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cTextureManager.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cVertex.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\graphics.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\iCamera.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\sBufferIds.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\sTextureLoadingInfo.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\fileLoader\Assimp.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="cImageFile.h">
+    <ClInclude Include="graphics\fileLoader\cImageFile.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="LoadCubeMapFromFiles.h">
+    <ClInclude Include="graphics\fileLoader\LoadCubeMapFromFiles.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="LoadSingleMeshFromFile.h">
+    <ClInclude Include="graphics\fileLoader\LoadSingleMeshFromFile.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="LoadTextureFromFile.h">
+    <ClInclude Include="graphics\fileLoader\LoadTextureFromFile.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="sMeshLoadingInfo.h">
+    <ClInclude Include="graphics\fileLoader\sMeshLoadingInfo.h">
       <Filter>include\Graphics\load</Filter>
     </ClInclude>
-    <ClInclude Include="c3rdPersonCamera.h">
-      <Filter>include\Graphics\camera</Filter>
+    <ClInclude Include="graphics\shaderbits\cLitShader.h">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaderbits\cSimpleShader.h">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaderbits\LoadShader.h">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\shaderbits\shader_vars.h">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="external_includes.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

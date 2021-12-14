@@ -1,9 +1,9 @@
 #pragma once
-#include <physics/cParticle.h>
-#include <physics/cParticleForceRegistry.h>
-#include <physics/cParticleContact.h>
-#include <physics/iParticleContactGenerator.h>
-#include <physics/cParticleContactResolver.h>
+#include <cParticle.h>
+#include <iParticleContactGenerator.h>
+#include <cParticleContactResolver.h>
+#include <cParticleContact.h>
+#include <cParticleForceRegistry.h>
 
 #include <vector>
 
@@ -13,38 +13,49 @@ namespace nPhysics
 	{
 	private:
 		std::vector<cParticle*> mParticles;
-		cParticleForceRegistry* mForceRegistry;
-		// The list of contacts.
+		
+		//List of contacts
 		cParticleContact* mContacts;
-		// The maximum number of contacts allowed.
+
+		//Maximum number of contacts allowed
 		size_t mMaxContacts;
-		// All of the contact generators.
+
+		//Vector with all contact generators
 		std::vector<iParticleContactGenerator*> mContactGenerators;
-		// The particle contact resolver.
+
+		//Particle contact resolver
 		cParticleContactResolver mResolver;
-		// The world should calculate the number of iterations
-		// to give the contact resolver each frame.
+
+		//Boolean telling The World to calculate the number of interations to tell the contact resolver each frame
 		bool mCalculateIterations;
+
+		//ForceRegistry
+		cParticleForceRegistry* mForceRegistry;
+
 	public:
+		//Original Constructor
+		//cParticleWorld();
 		cParticleWorld(size_t maxContacts, size_t iterations = 0);
 		virtual ~cParticleWorld();
-
 		cParticleWorld() = delete;
 		cParticleWorld(cParticleWorld& other) = delete;
 		cParticleWorld& operator=(cParticleWorld& other) = delete;
 
+		//Particles
 		bool AddParticle(cParticle* particle);
 		bool RemoveParticle(cParticle* particle);
-		size_t NumParticles();
 		void TimeStep(float deltaTime);
-		size_t GenerateContacts();
-
 		void IntegrateParticles(float deltaTime);
-
-		cParticleForceRegistry* GetForceRegistry() const;
-
+		size_t NumParticles();
+		
+		//Contacts
+		size_t GenerateContacts();
+		//Rename AddContactToContactGenerator?
 		bool AddContactContactGenerator(iParticleContactGenerator* generator);
 		bool RemoveContactContactGenerator(iParticleContactGenerator* generator);
+
+		//Force Registry
+		cParticleForceRegistry* GetForceRegistry() const;
 	};
 }
 

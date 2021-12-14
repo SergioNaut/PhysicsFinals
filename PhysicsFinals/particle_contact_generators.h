@@ -1,34 +1,34 @@
 #pragma once
-#include <physics/iParticleContactGenerator.h>
+#include <iParticleContactGenerator.h>
 
 namespace nPhysics
 {
-	/// <summary>
-	/// This is a 'dumb' gound plane (y is always 'up' <0,1,0>)
-	/// Set the groundHeight value in the constructor and contacts will be created for
-	/// particles that have y values below that ground height.
-	/// </summary>
-	class cGroundPlaneParticleContactGenerator : public iParticleContactGenerator
+	//Simple Contact
+	//Based on the ground plane one
+	class cPlaneParticleContactGenerator : public iParticleContactGenerator
 	{
-		float mGroundHeight;
+		//original had a float mGroundHeight
+		//5 Instances, 1 for each plane
+		glm::vec3 mNormal;
+		//distance from origin
+		float distance;
+		float sphereRadius;
 	public:
-		cGroundPlaneParticleContactGenerator(float groundHeight);
+		
+		cPlaneParticleContactGenerator(glm::vec3 nNormal,float dDistance, float sSphereRadius);
+		//cPlaneParticleContactGenerator() = delete;
+		cPlaneParticleContactGenerator(const cPlaneParticleContactGenerator& other) = delete;
+		cPlaneParticleContactGenerator& operator=(const cPlaneParticleContactGenerator& other) = delete;
 
-		cGroundPlaneParticleContactGenerator() = delete;
-		cGroundPlaneParticleContactGenerator(const cGroundPlaneParticleContactGenerator& other) = delete;
-		cGroundPlaneParticleContactGenerator& operator=(const cGroundPlaneParticleContactGenerator& other) = delete;
+		virtual ~cPlaneParticleContactGenerator();
+		//Adds a Contact to the given contact structure
 
-		virtual ~cGroundPlaneParticleContactGenerator();
-		/// <summary>
-		/// Fills the given contact structure with the generated contact(s).
-		/// The contact pointer should point to the first available contact in the contact array,
-		/// where limit is the maximum number of contacts in the array that can be written to.
-		/// The method returns the number of contacts generated.
-		/// </summary>
-		/// <param name="contact"></param>
-		/// <param name="limit"></param>
-		/// <param name="particles"></param>
-		/// <returns></returns>
 		virtual size_t AddContact(cParticleContact* contact, size_t limit, std::vector<cParticle*>& particles) const;
+	};
+
+	//For harder marks
+	class cSphereSphereContactGenerator : public iParticleContactGenerator
+	{
+	public:
 	};
 }
