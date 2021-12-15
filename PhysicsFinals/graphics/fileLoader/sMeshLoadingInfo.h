@@ -15,7 +15,8 @@ namespace nGraphics
 	};
 	struct sMeshLoadingInfo
 	{
-		sMeshLoadingInfo() : DoResize(false), Extents(1.f, 1.f, 1.f), MaintainDimensions(true) {}
+		//sMeshLoadingInfo() : DoResize(false), Extents(1.f, 1.f, 1.f), MaintainDimensions(true) {}
+		sMeshLoadingInfo() : DoResize(false),DoRotate(false), Rotation(1.0f), Extents(1.f, 1.f, 1.f), MaintainDimensions(true) {}
 
 		std::string File;
 		std::vector<sSubMeshLoadingInfo> SubMeshes;
@@ -25,8 +26,13 @@ namespace nGraphics
 		glm::vec3 Extents;
 		// Checks if any resizing needs to be done
 		bool DoResize;
-		// if you want to maintain the dimensions,
-		// we'll be using the minimum of whatever you put in Extents
+		//Uses the minumum values from Extents if you want the dimensions to stay the same
 		bool MaintainDimensions;
+
+		//Rotation bits
+		bool DoRotate;
+		glm::mat3 Rotation;
+
+		//Needs the triangleData bool?
 	};
 }

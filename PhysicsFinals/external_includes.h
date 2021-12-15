@@ -13,7 +13,7 @@
 #include <glm/james/mat4stack.h>
 #include <glm/james/inline_helpers.h>
 #include <glm/james/aabb.h>
-
+#include <glm/james/rotation_from_to.h>
 // Include glew first
 #define GLEW_STATIC
 #include <GL\glew.h>

@@ -16,7 +16,8 @@ namespace nPhysics
 		, mIsAlive(true)
 	{
 		//Randomizes the sphereRadius a little bit
-		sphereRadius = getRandom(0.1f, 1.0f);
+		//sphereRadius = getRandom(0.1f, 1.0f);
+		sphereRadius = 1.0f;
 		SetMass(mass + sphereRadius);
 	}
 	cParticle::~cParticle(){}

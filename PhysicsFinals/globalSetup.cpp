@@ -20,6 +20,10 @@ nGraphics::cGraphicsComponent* wallGraphics1 = 0;
 nGraphics::cGraphicsComponent* wallGraphics2 = 0;
 nGraphics::cGraphicsComponent* wallGraphics3 = 0;
 nGraphics::cGraphicsComponent* wallGraphics4 = 0;
+
+nGraphics::cGraphicsComponent* sphereGraphics = 0;
+nGraphics::cGraphicsComponent* tubeGraphics = 0;
+
 #pragma endregion
 
 nPhysics::cParticleWorld* particleWorld = 0;
@@ -77,6 +81,7 @@ bool StartGraphics()
 	nGraphics::gTextureManager->Load("../Assets/white.bmp", "white", false);
 	nGraphics::gTextureManager->Load("../Assets/brickwall.bmp", "bricks", false);
 	nGraphics::gTextureManager->Load("../Assets/roald.bmp", "roald", false);
+	nGraphics::gTextureManager->Load("../Assets/metalTexture.bmp", "metal", false);
 #pragma endregion
 
 #pragma region LoadingMeshes
@@ -90,7 +95,7 @@ bool StartGraphics()
 	loadingInfo.DoResize = false;
 	loadingInfo.AddSubMesh("skybox");
 	infos.push_back(loadingInfo);
-	// Lower poly Reck mesh for Projectiles
+	// Lower poly Rock mesh for Projectiles
 	loadingInfo.File = "../Assets/rock.obj";
 	loadingInfo.DoResize = true;
 	loadingInfo.Extents = glm::vec3(1.f, 1.f, 1.f);
@@ -99,9 +104,22 @@ bool StartGraphics()
 	// Box mesh for planes and boxes
 	loadingInfo.File = "../Assets/box.obj";
 	loadingInfo.DoResize = true;
-	loadingInfo.Extents = glm::vec3(2.f, 2.f, 2.f);  // cube 2x2x2
+	loadingInfo.Extents = glm::vec3(2.f, 2.f, 2.f);
 	loadingInfo.SubMeshes[0].Name = "box";
 	infos.push_back(loadingInfo);
+	//Mesh for particle spheres
+	loadingInfo.File = "../Assets/ball.obj";
+	loadingInfo.DoResize = true;
+	loadingInfo.Extents = glm::vec3(2.f, 2.f, 2.f);
+	loadingInfo.AddSubMesh("sphere");
+	infos.push_back(loadingInfo);
+	//Mesh for Rods
+	loadingInfo.File = "../Assets/cylinder.obj";
+	loadingInfo.DoResize = true;
+	loadingInfo.Extents = glm::vec3(2.f, 2.f, 2.f);
+	loadingInfo.SubMeshes[0].Name = "cylinder";
+	infos.push_back(loadingInfo);
+
 
 	if (!nGraphics::gMeshManager->Load(infos))
 	{
@@ -210,6 +228,8 @@ void EndGraphics()
 	delete wallGraphics2;
 	delete wallGraphics3;
 	delete wallGraphics4;
+	delete sphereGraphics;
+	delete tubeGraphics;
 
 	delete camera;
 

@@ -13,6 +13,9 @@
 #include <particle_contact_generators.h>
 #include <globalSetup.h>
 
+//Create a file for all objects
+#include <cBoxObject.h>
+
 //For now, projectile stuff from the midterms
 struct sProjectileDef
 {
@@ -98,7 +101,8 @@ void mainLoop()
 
 	// BEGIN PROJECT 3 SETUP
 	std::vector<nPhysics::cParticle*> particles;
-	nPhysics::cParticleWorld* world = new nPhysics::cParticleWorld(100, 0);
+	//OLD WORLD
+	//nPhysics::cParticleWorld* world = new nPhysics::cParticleWorld(100, 0);
 	//Particle variables
 	glm::vec4 particleColor(1.0f, 1.0f, 1.0f, 1.0f);
 	float particleRadius(1.0f);
@@ -107,19 +111,19 @@ void mainLoop()
 
 	//Ground Plane
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorG(glm::vec3(0.0f,/*0.2f*/ 1.0f, 0.0f), 1.0f, 1.0f);
-	world->AddContactContactGenerator(&particleContactGeneratorG);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorG);
 
 	//Left Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorLeft(glm::vec3(1.0f, 0.f, 0.0f),-40.0f, 1.0f);
-	world->AddContactContactGenerator(&particleContactGeneratorLeft);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorLeft);
 
 	//Right Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorRight(glm::vec3(-1.0f, 0.f, 0.0f),-40.0f, 1.0f);
-	world->AddContactContactGenerator(&particleContactGeneratorRight);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorRight);
 
 	//Back Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorBack(glm::vec3(0.0f, 0.f, -2.0f),-40.0f, 1.0f);
-	world->AddContactContactGenerator(&particleContactGeneratorBack);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorBack);
 
 	//Roof - Nope
 	//nPhysics::cPlaneParticleContactGenerator particleContactGeneratorRoof(glm::vec3(1.0f, 5.f, 0.0f), -5.0f, 1.0f);
@@ -127,8 +131,19 @@ void mainLoop()
 
 	//Front Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorFront(glm::vec3(0.0f, 0.f, 1.0f),-40.0f, 1.0f);
-	world->AddContactContactGenerator(&particleContactGeneratorFront);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorFront);
 #pragma endregion
+
+#pragma region Objects
+	cBoxObject* box1 = new cBoxObject();
+	objects.push_back(box1);
+
+	for (cObject* object : objects)
+	{
+		object->Begin();
+	}
+#pragma endregion
+
 
 #pragma region KeySetup
 	nInput::cKey* key1 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_1);
@@ -171,7 +186,7 @@ void mainLoop()
 			//glm::vec3 randomVelocity(getRandom(-3.0f, 3.0f), 10.0f, getRandom(-3.0f, 3.0f));
 			glm::vec3 randomVelocity((rotMat[0] * 3.0f) + (rotMat[1] * 10.0f) + (rotMat[2] * 3.0f));
 			particleP->SetVelocity(randomVelocity);
-			world->AddParticle(particleP);
+			particleWorld->AddParticle(particleP);
 			particles.push_back(particleP);
 		}
 		else if (aKey->IsJustPressed())
@@ -224,7 +239,7 @@ void mainLoop()
 		}
 
 
-		world->TimeStep(deltaTime);
+		particleWorld->TimeStep(deltaTime);
 
 		// Safety, mostly for first frame
 		if (deltaTime == 0.f)
@@ -245,6 +260,12 @@ void mainLoop()
 		// end setting per-frame vars
 
 		nGraphics::BeginFrame(PerFrameVars);
+
+		//Render objects
+		for (cObject* object : objects)
+		{
+			object->Render();
+		}
 
 		// Graphical Item rendering
 		skyboxGraphics->Render();
@@ -277,14 +298,22 @@ void mainLoop()
 			continueMainLoop = false;
 		}
 	}
-	for (nPhysics::cParticle* p : particles)
+	for (cObject* object : objects)
 	{
-		world->RemoveParticle(p);
-		delete p;
+		object->End();
 	}
-	particles.clear();
-	// clean up!
-	delete world;
+	for (cObject* object : objects)
+	{
+		delete object;
+	}
+	//for (nPhysics::cParticle* p : particles)
+	//{
+	//	particleWorld->RemoveParticle(p);
+	//	delete p;
+	//}
+	//particles.clear();
+	//// clean up!
+	//delete particleWorld;
 }
 
 //#pragma region Helpers

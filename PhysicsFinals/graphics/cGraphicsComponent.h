@@ -40,6 +40,8 @@ namespace nGraphics
 		bool SetDiffuseTexture(const std::string& texName, float factor = 1.f);
 
 		void Render();
+		//Kinda bad to just throw this here
+		void RenderCylinder(const glm::vec3& from, const glm::vec3& to, float radius, const glm::vec4& color, glm::vec3 cylinderAxis);
 	private:
 		cGraphicsComponent(const cGraphicsComponent& other) {}
 		cGraphicsComponent& operator=(const cGraphicsComponent& other) { return *this; }

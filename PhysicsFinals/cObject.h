@@ -6,6 +6,6 @@ class cObject
 public:
 	virtual void Begin() {};
 	virtual void Update(float deltaTime) {};
-	virtual void Rander() {};
+	virtual void Render() {};
 	virtual void End() {};
 };

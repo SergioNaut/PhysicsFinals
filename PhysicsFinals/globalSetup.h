@@ -13,7 +13,6 @@ extern nGraphics::sPerFrameVars PerFrameVars;
 extern nGraphics::c3rdPersonCamera* camera;
 #pragma endregion
 
-//TODO: Add sphere and tube
 #pragma region GraphicsStuff
 extern nGraphics::cGraphicsComponent* skyboxGraphics;
 extern nGraphics::cGraphicsComponent* planeGraphics;
@@ -23,6 +22,9 @@ extern nGraphics::cGraphicsComponent* wallGraphics1;
 extern nGraphics::cGraphicsComponent* wallGraphics2;
 extern nGraphics::cGraphicsComponent* wallGraphics3;
 extern nGraphics::cGraphicsComponent* wallGraphics4;
+
+extern nGraphics::cGraphicsComponent* sphereGraphics;
+extern nGraphics::cGraphicsComponent* tubeGraphics;
 #pragma endregion
 
 extern std::vector<cObject*> objects;

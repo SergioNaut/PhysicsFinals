@@ -1,5 +1,5 @@
 #include <cParticleRodConstraint.h>
-//May put rope constraint here as well
+//May put cable constraint here as well
 
 namespace nPhysics
 {

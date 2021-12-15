@@ -7,6 +7,7 @@
 
 class cBoxObject : public cObject
 {
+public:
 	//Keeping the unions because they are really practical
 	union
 	{
@@ -57,7 +58,8 @@ class cBoxObject : public cObject
 	virtual ~cBoxObject();
 
 	virtual void Begin();
-	virtual void Update(float deltaTime);
+	//TODO: Remove Update?
+	//virtual void Update(float deltaTime);
 	virtual void Render();
 	virtual void End();
 };
