@@ -36,7 +36,7 @@ cBoxObject::cBoxObject()
 	mConstraintAB = new nPhysics::cParticleRodConstraint(mParticleA, mParticleB);
 	mConstraintAD = new nPhysics::cParticleRodConstraint(mParticleA, mParticleD);
 	mConstraintAE = new nPhysics::cParticleRodConstraint(mParticleA, mParticleE);
-
+	
 	mConstraintBC = new nPhysics::cParticleRodConstraint(mParticleB, mParticleC);
 	mConstraintBF = new nPhysics::cParticleRodConstraint(mParticleB, mParticleF);
 

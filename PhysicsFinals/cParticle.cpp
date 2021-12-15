@@ -18,7 +18,7 @@ namespace nPhysics
 		//Randomizes the sphereRadius a little bit
 		//sphereRadius = getRandom(0.1f, 1.0f);
 		sphereRadius = 1.0f;
-		SetMass(mass + sphereRadius);
+		SetMass(mass * sphereRadius);
 	}
 	cParticle::~cParticle(){}
 

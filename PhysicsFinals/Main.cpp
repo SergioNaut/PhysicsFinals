@@ -106,6 +106,11 @@ void mainLoop()
 	//Particle variables
 	glm::vec4 particleColor(1.0f, 1.0f, 1.0f, 1.0f);
 	float particleRadius(1.0f);
+#pragma region SphereSphereContacts!
+	nPhysics::cSphereSphereContactGenerator sphereCollider;
+	particleWorld->AddContactContactGenerator(&sphereCollider);
+#pragma endregion
+
 #pragma region Planes
 	//Planes have some values commented because I'm using this project to test things for the finals so it has some things from the finals
 

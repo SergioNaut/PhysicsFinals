@@ -49,4 +49,46 @@ namespace nPhysics
 		}
 		return numContactsCreated;
 	}
+
+	//SphereSphere stuff!
+
+	cSphereSphereContactGenerator::cSphereSphereContactGenerator(){}
+	cSphereSphereContactGenerator::~cSphereSphereContactGenerator(){}
+	size_t cSphereSphereContactGenerator::AddContact(cParticleContact* contact, size_t limit, std::vector<cParticle*>& particles) const
+	{
+		size_t nContactsCreated = 0;
+		for (size_t i = 0; i < particles.size() - 1; i++)
+		{
+			//TODO: Read particles' radius
+			//float radiusA = 1.0f;
+			float radiusA = particles[i]->GetRadius();
+			for (size_t j = i + 1; j < particles.size(); j++)
+			{
+				//float radiusB = 1.0f;
+				float radiusB = particles[j]->GetRadius();
+
+				glm::vec3 separation = particles[i]->GetPosition() - particles[j]->GetPosition();
+
+				//There's a better way of doing it?
+				float distance = glm::length(separation);
+				if (radiusA + radiusB > distance)
+				{
+					//This is a contact
+					contact->mParticle0 = particles[i];
+					contact->mParticle1 = particles[j];
+					contact->mContactNormal = glm::normalize(separation);
+					contact->mPenetration = radiusA + radiusB - distance;
+					contact->mRestitution = 0.5f;
+					nContactsCreated++;
+					contact++;
+				}
+
+				if (nContactsCreated >= limit)
+				{
+					return nContactsCreated;
+				}
+			}
+		}
+		return nContactsCreated;
+	}
 }

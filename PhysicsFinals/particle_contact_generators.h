@@ -30,5 +30,11 @@ namespace nPhysics
 	class cSphereSphereContactGenerator : public iParticleContactGenerator
 	{
 	public:
+		cSphereSphereContactGenerator();
+		cSphereSphereContactGenerator(const cSphereSphereContactGenerator& other) = delete;
+		cSphereSphereContactGenerator& operator=(const cSphereSphereContactGenerator& other) = delete;
+
+		virtual ~cSphereSphereContactGenerator();
+		virtual size_t AddContact(cParticleContact* contact, size_t limit, std::vector<cParticle*>& particles) const;
 	};
 }
