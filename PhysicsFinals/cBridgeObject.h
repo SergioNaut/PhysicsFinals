@@ -28,6 +28,12 @@ public:
 			nPhysics::cParticle* mParticleJ;
 			nPhysics::cParticle* mParticleK;
 			nPhysics::cParticle* mParticleL;
+
+			////Second Middle bit?
+			//nPhysics::cParticle* mParticleT;
+			//nPhysics::cParticle* mParticleU;
+			//nPhysics::cParticle* mParticleV;
+			//nPhysics::cParticle* mParticleX;
 			
 			//Second Support
 			nPhysics::cParticle* mParticleM;

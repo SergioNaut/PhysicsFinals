@@ -252,9 +252,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+	
   <PropertyGroup>
     <DeploymentFolderName>MyDeploymentFolder</DeploymentFolderName>
+	<AssetFolderName>Assets</AssetFolderName>
     <ExternFolder>$(ProjectDir)..\Extern\</ExternFolder>
+	<AssetsFolder>$(ProjectDir)..\Assets\</AssetsFolder>
+	  <ProjectFolderName>ProjectDeployFolder</ProjectFolderName>
   </PropertyGroup>
   <ItemGroup>
     <DeploymentCopyFiles Include="$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName)$(TargetExt)">
@@ -263,15 +267,22 @@
     </DeploymentCopyFiles>
     <DeploymentCopyFiles Include="$(ExternFolder)assimp\lib\x64\Release\assimp-vc142-mt.dll">
     </DeploymentCopyFiles>
+	  <AssetsCopyFiles Include ="$(AssetsFolder)*.*"></AssetsCopyFiles>
   </ItemGroup>
   <PropertyGroup>
+	  
     <DeploymentPath>$(ProjectDir)$(DeploymentFolderName)</DeploymentPath>
+	<AssetPath>$(DeploymentPath)\$(AssetFolderName)</AssetPath>
+	<ProjectPath>$(DeploymentPath)\$(ProjectFolderName)</ProjectPath>
   </PropertyGroup>
   <Target Name="CreateDeploymentFolder">
     <MakeDir Directories="$(DeploymentPath)" />
+	  <MakeDir Directories="$(AssetPath)"/>
+	  <MakeDir Directories="$(ProjectPath)"/>
   </Target>
   <Target Name="AfterBuild" DependsOnTargets="CreateDeploymentFolder" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Message Text="This makes a deployment folder" />
-    <Copy SourceFiles="@(DeploymentCopyFiles)" DestinationFolder="$(DeploymentPath)" />
+    <Message Text="This makes a deployment folder filled with things" />
+    <Copy SourceFiles="@(DeploymentCopyFiles)" DestinationFolder="$(ProjectPath)" />
+	  <Copy SourceFiles="@(AssetsCopyFiles)" DestinationFolder="$(AssetPath)"/>
   </Target>
 </Project>

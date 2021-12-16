@@ -8,7 +8,7 @@ cBallonObject::cBallonObject()
 	mParticleA = new nPhysics::cParticle(0.0f, glm::vec3(10.0f, 1.0f, 20.0f));
 	mParticleA->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	//Floaty bits?
+	//Floaty bits
 	mParticleB = new nPhysics::cParticle(2.0f, glm::vec3(10.0f, 12.0f, 20.0f));
 	mParticleB->SetAcceleration(glm::vec3(0.0f, 5.0f, 0.0f));
 
