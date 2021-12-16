@@ -83,7 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Extern\rapidxml;$(SolutionDir)Extern\rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(SolutionDir)Extern\rapidxml;$(SolutionDir)Extern\rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Extern\FreeImage\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glfw\lib\$(Platform);$(SolutionDir)Extern\assimp\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glew\lib\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -145,11 +145,11 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;OPENGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;OPENGL32.lib;assimp-vc142-mt.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Debug\assimp-vc142-mtd.dll" "$(OutDir)assimp-vc142-mtd.dll"
-copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)FreeImaged.dll"</Command>
+      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Release\assimp-vc142-mt.dll" "$(OutDir)assimp-vc142-mt.dll"
+copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir)FreeImage.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -160,6 +160,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cBoxObject.cpp" />
+    <ClCompile Include="cBridgeObject.cpp" />
     <ClCompile Include="cConfigReader.cpp" />
     <ClCompile Include="cParticle.cpp" />
     <ClCompile Include="cParticleConstraint.cpp" />

@@ -67,7 +67,7 @@ public:
 
 			//Middle bit
 			nPhysics::cParticleCableConstraint* mConstraintAI;
-			nPhysics::cParticleCableConstraint* mConstraintHJ;
+			nPhysics::cParticleCableConstraint* mConstraintDJ;
 			nPhysics::cParticleCableConstraint* mConstraintLM;
 			nPhysics::cParticleCableConstraint* mConstraintKP;
 
@@ -75,6 +75,10 @@ public:
 			nPhysics::cParticleRodConstraint* mConstraintJK;
 			nPhysics::cParticleRodConstraint* mConstraintKL;
 			nPhysics::cParticleRodConstraint* mConstraintLI;
+
+			nPhysics::cParticleRodConstraint* mConstraintIK;
+			nPhysics::cParticleRodConstraint* mConstraintJL;
+
 
 			//Second Support
 			nPhysics::cParticleRodConstraint* mConstraintMN;

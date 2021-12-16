@@ -5,29 +5,28 @@ cBoxObject::cBoxObject()
 {
 #pragma region ParticleSetup
 	//TODO: Set Mass for particle A?
-	mParticleA = new nPhysics::cParticle(0.0f, glm::vec3(-10.0f, 12.0f, 0.0f));
+	mParticleA = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 12.0f, 5.0f));
 	mParticleA->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 	
-
-	mParticleB = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 12.0f, -5.0f));
+	mParticleB = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 12.0f, 10.0f));
 	mParticleB->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleC = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 12.0f, -5.0f));
+	mParticleC = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 12.0f, 10.0f));
 	mParticleC->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleD = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 12.0f, 0.0f));
+	mParticleD = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 12.0f, 5.0f));
 	mParticleD->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleE = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 7.0f, 0.0f));
+	mParticleE = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 7.0f, 5.0f));
 	mParticleE->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleF = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 7.0f, -5.0f));
+	mParticleF = new nPhysics::cParticle(2.0f, glm::vec3(-10.0f, 7.0f, 10.0f));
 	mParticleF->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleG = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 7.0f, -5.0f));
+	mParticleG = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 7.0f, 10.0f));
 	mParticleG->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleH = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 7.0f, 0.0f));
+	mParticleH = new nPhysics::cParticle(2.0f, glm::vec3(-5.0f, 7.0f, 5.0f));
 	mParticleH->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
 #pragma endregion
@@ -110,7 +109,7 @@ void cBoxObject::Render()
 		sphereGraphics->GetVars()->ModelColor = glm::vec4(1.0f, 1.0f, 1.0f,1.0f);
 		sphereGraphics->Render();
 	}
-	//Super dumb way but I hope it works
+	//Super dumb way but it works
 	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleB->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleD->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleE->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));

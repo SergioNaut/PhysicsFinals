@@ -15,6 +15,7 @@
 
 //Create a file for all objects
 #include <cBoxObject.h>
+#include <cBridgeObject.h>
 
 void mainLoop();
 
@@ -128,6 +129,9 @@ void mainLoop()
 	cBoxObject* box1 = new cBoxObject();
 	objects.push_back(box1);
 
+	cBridgeObject* bridge1 = new cBridgeObject();
+	objects.push_back(bridge1);
+
 	for (cObject* object : objects)
 	{
 		object->Begin();
@@ -204,7 +208,7 @@ void mainLoop()
 			particleP->SetMass(projectileConfig.projectiles.mass3);
 			particleP->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 			//Change velocity with rotMat
-			glm::vec3 randomVelocity((rotMat[0] * -5.0f) + (rotMat[1] * 20.0f) + (rotMat[2] * 3.0f));
+			glm::vec3 randomVelocity((rotMat[0] * -10.0f) + (rotMat[1] * 20.0f) + (rotMat[2] * 3.0f));
 			particleP->SetVelocity(randomVelocity);
 			particleWorld->AddParticle(particleP);
 			particles.push_back(particleP);
