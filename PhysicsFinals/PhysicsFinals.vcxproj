@@ -195,6 +195,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cBoxObject.h" />
+    <ClInclude Include="cBridgeObject.h" />
     <ClInclude Include="cConfigReader.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cParticle.h" />

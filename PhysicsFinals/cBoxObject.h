@@ -58,8 +58,6 @@ public:
 	virtual ~cBoxObject();
 
 	virtual void Begin();
-	//TODO: Remove Update?
-	//virtual void Update(float deltaTime);
 	virtual void Render();
 	virtual void End();
 };

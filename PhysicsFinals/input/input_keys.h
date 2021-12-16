@@ -11,8 +11,8 @@ namespace nInput
 	{	
 		const int KEY_1 = GLFW_KEY_1;
 		const int KEY_2 = GLFW_KEY_2;
-		/*const int KEY_3 = GLFW_KEY_3;
-		const int KEY_4 = GLFW_KEY_4;*/
+		const int KEY_3 = GLFW_KEY_3;
+		//const int KEY_4 = GLFW_KEY_4;
 		const int KEY_W = GLFW_KEY_W;
 		const int KEY_A = GLFW_KEY_A;
 		const int KEY_S = GLFW_KEY_S;

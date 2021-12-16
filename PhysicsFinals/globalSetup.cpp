@@ -136,7 +136,7 @@ bool StartGraphics()
 	infos.push_back(loadingInfo);
 
 	//Reading OBJs from XML
-#pragma region XMLOBJs
+#pragma region XMLOnjectss
 	{
 		std::string fileName = "../Assets/";
 		fileName += projectileConfig.projectiles.name1;
@@ -264,7 +264,8 @@ bool StartGraphics()
 	{
 		nGraphics::sGraphicsComponentDef graphicsDef;
 		graphicsDef.Mesh = projectileConfig.projectiles.name2;
-		glm::set(graphicsDef.ModelColor, 1.0f, 0.0f, 0.0f, 0.0f);
+		graphicsDef.TexDiffuse = "white";
+		glm::set(graphicsDef.ModelColor, 1.0f, 0.0f, 0.0f, 1.0f);
 		glm::set(graphicsDef.Position, 0.0f, 3.0f, 0.0f);
 		//For now I'll use the radius for scaling as well
 		glm::set(graphicsDef.Scale, projectileConfig.projectiles.radius2, projectileConfig.projectiles.radius2, projectileConfig.projectiles.radius2);
@@ -273,7 +274,8 @@ bool StartGraphics()
 	{
 		nGraphics::sGraphicsComponentDef graphicsDef;
 		graphicsDef.Mesh = projectileConfig.projectiles.name3;
-		glm::set(graphicsDef.ModelColor, 0.0f, 0.0f, 0.6f, 0.0f);
+		graphicsDef.TexDiffuse = "white";
+		glm::set(graphicsDef.ModelColor, 0.0f, 0.0f, 0.6f, 1.0f);
 		glm::set(graphicsDef.Position, 0.0f, 3.0f, 0.0f);
 		//For now I'll use the radius for scaling as well
 		glm::set(graphicsDef.Scale, projectileConfig.projectiles.radius3, projectileConfig.projectiles.radius3, projectileConfig.projectiles.radius3);
