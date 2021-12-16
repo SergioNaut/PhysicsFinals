@@ -16,21 +16,6 @@
 //Create a file for all objects
 #include <cBoxObject.h>
 
-//For now, projectile stuff from the midterms
-struct sProjectileDef
-{
-	float size;
-	float mass;
-	float muzzle;
-	float gravity;
-	float lifetime;
-};
-
-struct sConfig
-{
-	sProjectileDef ProjectileDef;
-};
-
 void mainLoop();
 
 int main()
@@ -93,8 +78,8 @@ void mainLoop()
 	float cannonPitch = 10.0f;
 	float* pCannonYaw = &cannonYaw;
 	float* pCannonPitch = &cannonPitch;
-	float minYaw = -1.0f;
-	float maxYaw = 1.0f;
+	float minYaw = -2.0f;
+	float maxYaw = 2.0f;
 	float minPitch = 0.5f;
 	float maxPitch = 26.0f;
 #pragma endregion
@@ -151,13 +136,19 @@ void mainLoop()
 
 
 #pragma region KeySetup
-	nInput::cKey* key1 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_1);
 	nInput::cKey* wKey = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_W);
 	nInput::cKey* aKey = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_A);
 	nInput::cKey* sKey = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_S);
 	nInput::cKey* dKey = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_D);
-	//nInput::cKey* key2 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_2);
+	
+	nInput::cKey* key1 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_1);
+	nInput::cKey* key2 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_2);
+	nInput::cKey* key3 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_2);
 #pragma endregion
+
+	//Saves which key has been pressed so program knows what projectile to shoot
+		//Super bad
+	int keyHelper = 0;
 
 	while (continueMainLoop)
 	{
@@ -185,15 +176,40 @@ void mainLoop()
 		if (key1->IsJustPressed())
 		{
 			glm::mat3 rotMat = rotationMatrix(cannonYaw, cannonPitch);
-			nPhysics::cParticle* particleP = new nPhysics::cParticle(1.0f, glm::vec3(0.f, 1.5f, 0.f));
+			nPhysics::cParticle* particleP = new nPhysics::cParticle(1.0f, glm::vec3(0.f, /*1.5f*/5.0f, 0.f));
+			particleP->SetMass(projectileConfig.projectiles.mass1);
 			particleP->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 			//Change velocity with rotMat
-			//glm::vec3 randomVelocity(getRandom(-3.0f, 3.0f), 10.0f, getRandom(-3.0f, 3.0f));
 			glm::vec3 randomVelocity((rotMat[0] * 3.0f) + (rotMat[1] * 10.0f) + (rotMat[2] * 3.0f));
 			particleP->SetVelocity(randomVelocity);
 			particleWorld->AddParticle(particleP);
 			particles.push_back(particleP);
 		}
+		if (key2->IsJustPressed())
+		{
+			glm::mat3 rotMat = rotationMatrix(cannonYaw, cannonPitch);
+			nPhysics::cParticle* particleP = new nPhysics::cParticle(1.0f, glm::vec3(0.f, /*1.5f*/5.0f, 0.f));
+			particleP->SetMass(projectileConfig.projectiles.mass2);
+			particleP->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+			//Change velocity with rotMat
+			glm::vec3 randomVelocity((rotMat[0] * 3.0f) + (rotMat[1] * 10.0f) + (rotMat[2] * 3.0f));
+			particleP->SetVelocity(randomVelocity);
+			particleWorld->AddParticle(particleP);
+			particles.push_back(particleP);
+		}
+		if (key3->IsJustPressed())
+		{
+			glm::mat3 rotMat = rotationMatrix(cannonYaw, cannonPitch);
+			nPhysics::cParticle* particleP = new nPhysics::cParticle(1.0f, glm::vec3(0.f, /*1.5f*/5.0f, 0.f));
+			particleP->SetMass(projectileConfig.projectiles.mass3);
+			particleP->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+			//Change velocity with rotMat
+			glm::vec3 randomVelocity((rotMat[0] * 3.0f) + (rotMat[1] * 10.0f) + (rotMat[2] * 3.0f));
+			particleP->SetVelocity(randomVelocity);
+			particleWorld->AddParticle(particleP);
+			particles.push_back(particleP);
+		}
+
 		else if (aKey->IsJustPressed())
 		{
 			if (cannonPitch < maxPitch)
@@ -282,15 +298,36 @@ void mainLoop()
 
 		// render the particles
 		//Using the projectileMatrix from midterms
-		for (nPhysics::cParticle* p : particles)
+		for (nPhysics::cParticle* p : particles )
 		{
-			glm::mat4 projectileMatrix(1.0f);
-			projectileMatrix = glm::translate(projectileMatrix, p->GetPosition());
-			//projectileMatrix = glm::scale(projectileMatrix, glm::vec3(p->GetRadius()));
-			projectileMatrix = glm::scale(projectileMatrix, glm::vec3(particleRadius));
-			rockGraphics->GetVars()->ModelMatrix = projectileMatrix;
-			rockGraphics->GetVars()->ModelColor = particleColor;
-			rockGraphics->Render();
+				glm::mat4 projectileMatrix(1.0f);
+				projectileMatrix = glm::translate(projectileMatrix, p->GetPosition());
+				//projectileMatrix = glm::scale(projectileMatrix, glm::vec3(p->GetRadius()));
+				
+				//This is soooo gross
+				if (projectileConfig.projectiles.mass1 - p->GetTrueMass() <= 0.000001)
+				{
+					projectileMatrix = glm::scale(projectileMatrix, glm::vec3(projectileConfig.projectiles.radius1));
+					projectileGraphics1->GetVars()->ModelMatrix = projectileMatrix;
+					projectileGraphics1->GetVars()->ModelColor = particleColor;
+					projectileGraphics1->Render();
+				}
+
+				/*if (projectileConfig.projectiles.mass2 - p->GetTrueMass() <= 0.000001)
+				{
+					projectileMatrix = glm::scale(projectileMatrix, glm::vec3(projectileConfig.projectiles.radius2));
+					projectileGraphics2->GetVars()->ModelMatrix = projectileMatrix;
+					projectileGraphics2->GetVars()->ModelColor = particleColor;
+					projectileGraphics2->Render();
+				}
+
+				if ( projectileConfig.projectiles.mass3 - p->GetTrueMass() <= 0.000001)
+				{
+					projectileMatrix = glm::scale(projectileMatrix, glm::vec3(projectileConfig.projectiles.radius3));
+					projectileGraphics3->GetVars()->ModelMatrix = projectileMatrix;
+					projectileGraphics3->GetVars()->ModelColor = particleColor;
+					projectileGraphics3->Render();
+				}*/
 		}
 		// end Graphical Item rendering
 

@@ -24,10 +24,23 @@ nGraphics::cGraphicsComponent* wallGraphics4 = 0;
 nGraphics::cGraphicsComponent* sphereGraphics = 0;
 nGraphics::cGraphicsComponent* tubeGraphics = 0;
 
+//Read from the XML
+nGraphics::cGraphicsComponent* projectileGraphics1 = 0;
+nGraphics::cGraphicsComponent* projectileGraphics2 = 0;
+nGraphics::cGraphicsComponent* projectileGraphics3 = 0;
+
 #pragma endregion
 
 nPhysics::cParticleWorld* particleWorld = 0;
 std::vector<cObject*> objects;
+
+#pragma region ConfigReader
+
+sConfiguration projectileConfig;
+cConfigReader configReader;
+
+#pragma endregion
+
 
 #pragma region SetupFunctions
 
@@ -45,6 +58,8 @@ bool StartPhysics()
 
 bool StartGraphics()
 {
+	configReader.ReadConfigFromXML("config.xml", projectileConfig);
+
 	//Check if there's a camera already
 	if (camera)
 	{
@@ -119,6 +134,39 @@ bool StartGraphics()
 	loadingInfo.Extents = glm::vec3(2.f, 2.f, 2.f);
 	loadingInfo.SubMeshes[0].Name = "cylinder";
 	infos.push_back(loadingInfo);
+
+	//Reading OBJs from XML
+#pragma region XMLOBJs
+	{
+		std::string fileName = "../Assets/";
+		fileName += projectileConfig.projectiles.name1;
+		loadingInfo.File = fileName;
+		loadingInfo.DoResize = true;
+		loadingInfo.Extents = glm::vec3(1.f, 1.f, 1.f);
+		loadingInfo.AddSubMesh(projectileConfig.projectiles.name1);
+		infos.push_back(loadingInfo);
+	}
+
+	{
+		std::string fileName = "../Assets/";
+		fileName += projectileConfig.projectiles.name2;
+		loadingInfo.File = fileName;
+		loadingInfo.DoResize = true;
+		loadingInfo.Extents = glm::vec3(1.f, 1.f, 1.f);
+		loadingInfo.AddSubMesh(projectileConfig.projectiles.name2);
+		infos.push_back(loadingInfo);
+	}
+
+	{
+		std::string fileName = "../Assets/";
+		fileName += projectileConfig.projectiles.name3;
+		loadingInfo.File = fileName;
+		loadingInfo.DoResize = true;
+		loadingInfo.Extents = glm::vec3(1.f, 1.f, 1.f);
+		loadingInfo.AddSubMesh(projectileConfig.projectiles.name3);
+		infos.push_back(loadingInfo);
+	}
+#pragma endregion
 
 
 	if (!nGraphics::gMeshManager->Load(infos))
@@ -203,6 +251,36 @@ bool StartGraphics()
 		//glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
 		wallGraphics4 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
+#pragma region ProjectileModels
+	{
+		nGraphics::sGraphicsComponentDef graphicsDef;
+		graphicsDef.Mesh = projectileConfig.projectiles.name1;
+		glm::set(graphicsDef.ModelColor, 0.0f, 0.0f, 0.0f, 0.0f);
+		glm::set(graphicsDef.Position, 0.0f, 3.0f, 0.0f);
+		//For now I'll use the radius for scaling as well
+		glm::set(graphicsDef.Scale, projectileConfig.projectiles.radius1, projectileConfig.projectiles.radius1, projectileConfig.projectiles.radius1);
+		projectileGraphics1 = new nGraphics::cGraphicsComponent(graphicsDef);
+	}
+	{
+		nGraphics::sGraphicsComponentDef graphicsDef;
+		graphicsDef.Mesh = projectileConfig.projectiles.name2;
+		glm::set(graphicsDef.ModelColor, 1.0f, 0.0f, 0.0f, 0.0f);
+		glm::set(graphicsDef.Position, 0.0f, 3.0f, 0.0f);
+		//For now I'll use the radius for scaling as well
+		glm::set(graphicsDef.Scale, projectileConfig.projectiles.radius2, projectileConfig.projectiles.radius2, projectileConfig.projectiles.radius2);
+		projectileGraphics2 = new nGraphics::cGraphicsComponent(graphicsDef);
+	}
+	{
+		nGraphics::sGraphicsComponentDef graphicsDef;
+		graphicsDef.Mesh = projectileConfig.projectiles.name3;
+		glm::set(graphicsDef.ModelColor, 0.0f, 0.0f, 0.6f, 0.0f);
+		glm::set(graphicsDef.Position, 0.0f, 3.0f, 0.0f);
+		//For now I'll use the radius for scaling as well
+		glm::set(graphicsDef.Scale, projectileConfig.projectiles.radius3, projectileConfig.projectiles.radius3, projectileConfig.projectiles.radius3);
+		projectileGraphics3 = new nGraphics::cGraphicsComponent(graphicsDef);
+	}
+#pragma endregion
+
 #pragma endregion
 	return true;
 }
@@ -230,6 +308,10 @@ void EndGraphics()
 	delete wallGraphics4;
 	delete sphereGraphics;
 	delete tubeGraphics;
+
+	delete projectileGraphics1;
+	delete projectileGraphics2;
+	delete projectileGraphics3;
 
 	delete camera;
 

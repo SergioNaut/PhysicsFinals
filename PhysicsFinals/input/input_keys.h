@@ -10,8 +10,8 @@ namespace nInput
 	namespace KeyCode
 	{	
 		const int KEY_1 = GLFW_KEY_1;
-		/*const int KEY_2 = GLFW_KEY_2;
-		const int KEY_3 = GLFW_KEY_3;
+		const int KEY_2 = GLFW_KEY_2;
+		/*const int KEY_3 = GLFW_KEY_3;
 		const int KEY_4 = GLFW_KEY_4;*/
 		const int KEY_W = GLFW_KEY_W;
 		const int KEY_A = GLFW_KEY_A;
@@ -32,9 +32,9 @@ namespace nInput
 		
 		// For choosing projectiles/Particles (For use in the finals as well)
 		inline bool Num1() { return __InternalIsKeyDown(GLFW_KEY_1); }
-		/*inline bool Num2() { return __InternalIsKeyDown(GLFW_KEY_2); }
+		inline bool Num2() { return __InternalIsKeyDown(GLFW_KEY_2); }
 		inline bool Num3() { return __InternalIsKeyDown(GLFW_KEY_3); }
-		inline bool Num4() { return __InternalIsKeyDown(GLFW_KEY_4); }*/
+		//inline bool Num4() { return __InternalIsKeyDown(GLFW_KEY_4); }
 	}
 	namespace IsKeyUp
 	{

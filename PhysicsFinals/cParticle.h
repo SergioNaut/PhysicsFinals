@@ -24,6 +24,9 @@ namespace nPhysics
 
 		float sphereRadius;
 
+		//Used for hacks
+		float mTrueMass;
+
 		//TODO: SetSphereRadius for particles
 	public:
 
@@ -71,6 +74,9 @@ namespace nPhysics
 		//Added isAlive Helpers
 		void SetIsAlive(bool isAlive);
 		bool GetIsAlive() const;
+
+		//Dumb helper for getting mass
+		float GetTrueMass() const;
 
 	};
 }

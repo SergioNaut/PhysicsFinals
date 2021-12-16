@@ -36,6 +36,9 @@
     <Filter Include="include\Objects">
       <UniqueIdentifier>{71b4b325-e3be-4971-ae47-c6acfe9a2cb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{e3eb6bb1-7926-493d-b16b-1d1ad77bb511}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\shaders\LitShader.frag">
@@ -147,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="globalSetup.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cConfigReader.cpp">
+      <Filter>Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -276,5 +282,13 @@
     <ClInclude Include="globalSetup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cConfigReader.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config.xml">
+      <Filter>Config</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

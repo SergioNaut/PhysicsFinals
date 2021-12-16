@@ -33,9 +33,11 @@ namespace nPhysics
 		if (newMass <= 0.f)
 		{
 			mInverseMass = 0.f;
+			mTrueMass = 0.f;
 		}
 		else
 		{
+			mTrueMass = newMass;
 			mInverseMass = 1.f / newMass;
 		}
 	}
@@ -151,5 +153,11 @@ namespace nPhysics
 		return mIsAlive;
 	}
 #pragma endregion
+
+	//Dumb Helper
+	float cParticle::GetTrueMass() const
+	{
+		return mTrueMass;
+	}
 
 }

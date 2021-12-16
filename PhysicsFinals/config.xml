@@ -1,0 +1,3 @@
+<Config Type ="Projectiles">
+	<Projectiles Name1 ="rock.obj" Mass1 ="1.0f" Radius1 ="1.0f" Name2 ="orange.obj" Mass2 ="10.0f" Radius2="3.0f" Name3 ="sherlockGnomes.obj" Mass3 ="500.0f" Radius3 ="3.0f"></Projectiles>
+</Config>

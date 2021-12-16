@@ -78,12 +78,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Extern/rapidxml;$(SolutionDir)Extern/rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(ProjectDir);$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Extern\rapidxml;$(SolutionDir)Extern\rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(ProjectDir);$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Extern\FreeImage\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glfw\lib\$(Platform);$(SolutionDir)Extern\assimp\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glew\lib\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Extern/rapidxml;$(SolutionDir)Extern/rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Extern\rapidxml;$(SolutionDir)Extern\rapidjson;$(SolutionDir)Extern\assimp\include;$(SolutionDir)include;$(SolutionDir)Extern\glm\include;$(SolutionDir)Extern\FreeImage\include;$(SolutionDir)Extern\glfw\include;$(SolutionDir)Extern\glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Extern\FreeImage\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glfw\lib\$(Platform);$(SolutionDir)Extern\assimp\lib\$(Platform)\$(Configuration);$(SolutionDir)Extern\glew\lib\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -160,6 +160,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cBoxObject.cpp" />
+    <ClCompile Include="cConfigReader.cpp" />
     <ClCompile Include="cParticle.cpp" />
     <ClCompile Include="cParticleConstraint.cpp" />
     <ClCompile Include="cParticleContact.cpp" />
@@ -194,6 +195,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cBoxObject.h" />
+    <ClInclude Include="cConfigReader.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cParticle.h" />
     <ClInclude Include="cParticleConstraint.h" />
@@ -235,6 +237,9 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
     <ClInclude Include="iParticleForceGenerator.h" />
     <ClInclude Include="particle_contact_generators.h" />
     <ClInclude Include="particle_force_generators.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,7 @@
 #include <graphics/c3rdPersonCamera.h>
 #include <graphics/cGraphicsComponent.h>
 #include <vector>
+#include <cConfigReader.h>
 
 //Global functions for the program setup
 //Mostly to clean up the main
@@ -25,10 +26,22 @@ extern nGraphics::cGraphicsComponent* wallGraphics4;
 
 extern nGraphics::cGraphicsComponent* sphereGraphics;
 extern nGraphics::cGraphicsComponent* tubeGraphics;
+
+extern nGraphics::cGraphicsComponent* projectileGraphics1;
+extern nGraphics::cGraphicsComponent* projectileGraphics2;
+extern nGraphics::cGraphicsComponent* projectileGraphics3;
 #pragma endregion
 
 extern std::vector<cObject*> objects;
 extern nPhysics::cParticleWorld* particleWorld;
+
+#pragma region ConfigReader
+
+extern sConfiguration projectileConfig;
+extern cConfigReader configReader;
+
+#pragma endregion
+
 
 #pragma region StartupFunctions
 
