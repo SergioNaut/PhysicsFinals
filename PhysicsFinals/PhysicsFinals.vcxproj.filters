@@ -157,6 +157,9 @@
     <ClCompile Include="cBridgeObject.cpp">
       <Filter>include\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="cBallonObject.cpp">
+      <Filter>include\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cParticle.h">
@@ -289,6 +292,9 @@
       <Filter>Config</Filter>
     </ClInclude>
     <ClInclude Include="cBridgeObject.h">
+      <Filter>include\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cBallonObject.h">
       <Filter>include\Objects</Filter>
     </ClInclude>
   </ItemGroup>

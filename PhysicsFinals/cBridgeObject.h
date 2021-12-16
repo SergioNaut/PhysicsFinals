@@ -100,7 +100,7 @@ public:
 
 
 		};
-		nPhysics::cParticleRodConstraint* mConstraints[32];
+		nPhysics::cParticleRodConstraint* mConstraints[34];
 	};
 	nGraphics::cGraphicsComponent* mSphereGraphics;
 	nGraphics::cGraphicsComponent* mRodGraphics;

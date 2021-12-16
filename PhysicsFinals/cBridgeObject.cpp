@@ -29,7 +29,6 @@ cBridgeObject::cBridgeObject()
 	mParticleH = new nPhysics::cParticle(0.0f, glm::vec3(-15.0f, 2.0f, -5.0f));
 	mParticleH->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-
 	//MiddleBits
 
 	mParticleI = new nPhysics::cParticle(2.0f, glm::vec3(0.0f, 12.0f, -5.0f));
@@ -57,20 +56,17 @@ cBridgeObject::cBridgeObject()
 	mParticleP = new nPhysics::cParticle(0.0f, glm::vec3(30.0f, 20.0f, -5.0f));
 	mParticleP->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleQ = new nPhysics::cParticle(0.0f, glm::vec3(25.0f, 2.0f, -5.0f));
+	mParticleQ = new nPhysics::cParticle(0.0f, glm::vec3(25.0f, 2.0f , -5.0f));
 	mParticleQ->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
 	mParticleR = new nPhysics::cParticle(0.0f, glm::vec3(25.0f, 2.0f, -10.0f));
 	mParticleR->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleS = new nPhysics::cParticle(0.0f, glm::vec3(30.0f, 2.0f, -10.0f));
+	mParticleS = new nPhysics::cParticle(0.0f, glm::vec3(30.0f, 2.1f, -10.0f));
 	mParticleS->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
-	mParticleT = new nPhysics::cParticle(0.0f, glm::vec3(30.0f, 2.0f, -5.0f));
+	mParticleT = new nPhysics::cParticle(0.0f, glm::vec3(30.0f, 2.1f, -5.0f));
 	mParticleT->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
-
-
-
 
 
 #pragma endregion
@@ -139,7 +135,7 @@ cBridgeObject::cBridgeObject()
 		glm::set(graphicsDef.ModelColor, 1.0f, 0.0f, 0.0f, 1.0f);
 		glm::set(graphicsDef.Position, 0.0f, 1.0f, 0.0f);
 		glm::set(graphicsDef.Scale, 1.0f, 1.0f, 1.0f);
-		sphereGraphics = new nGraphics::cGraphicsComponent(graphicsDef);
+		mSphereGraphics = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
 		nGraphics::sGraphicsComponentDef graphicsDef;
@@ -148,7 +144,7 @@ cBridgeObject::cBridgeObject()
 		glm::set(graphicsDef.ModelColor, 1.0f, 0.0f, 0.0f, 1.0f);
 		glm::set(graphicsDef.Position, 0.0f, 1.0f, 0.0f);
 		glm::set(graphicsDef.Scale, 1.0f, 1.0f, 1.0f);
-		tubeGraphics = new nGraphics::cGraphicsComponent(graphicsDef);
+		mRodGraphics = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 }
 
@@ -160,7 +156,7 @@ cBridgeObject::~cBridgeObject()
 		delete mParticles[i];
 	}
 	//Destroys all rods
-	for (size_t i = 0; i < 32; i++)
+	for (size_t i = 0; i < 34; i++)
 	{
 		delete mConstraints[i];
 	}
@@ -174,7 +170,7 @@ void cBridgeObject::Begin()
 		particleWorld->AddParticle(mParticles[i]);
 	}
 	//Adds all rods
-	for (size_t i = 0; i < 32; i++)
+	for (size_t i = 0; i < 34; i++)
 	{
 		particleWorld->AddContactContactGenerator(mConstraints[i]);
 	}
@@ -191,22 +187,22 @@ void cBridgeObject::Render()
 	}
 #pragma region FirstBase
 
-	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleB->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleD->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleE->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleB->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleD->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleA->GetPosition(), mParticleE->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleB->GetPosition(), mParticleC->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleB->GetPosition(), mParticleF->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleB->GetPosition(), mParticleC->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleB->GetPosition(), mParticleF->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleC->GetPosition(), mParticleD->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleC->GetPosition(), mParticleG->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleC->GetPosition(), mParticleD->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleC->GetPosition(), mParticleG->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleD->GetPosition(), mParticleH->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleD->GetPosition(), mParticleH->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleE->GetPosition(), mParticleF->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleE->GetPosition(), mParticleH->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleF->GetPosition(), mParticleG->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleG->GetPosition(), mParticleH->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleE->GetPosition(), mParticleF->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleE->GetPosition(), mParticleH->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleF->GetPosition(), mParticleG->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleG->GetPosition(), mParticleH->GetPosition(), 0.5f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
 #pragma endregion
 
@@ -218,33 +214,39 @@ void cBridgeObject::Render()
 	tubeGraphics->RenderCylinder(mParticleL->GetPosition(), mParticleM->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	tubeGraphics->RenderCylinder(mParticleK->GetPosition(), mParticleP->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));*/
 
-
 	//Rods
 	tubeGraphics->RenderCylinder(mParticleI->GetPosition(), mParticleL->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	tubeGraphics->RenderCylinder(mParticleL->GetPosition(), mParticleK->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	tubeGraphics->RenderCylinder(mParticleK->GetPosition(), mParticleJ->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	tubeGraphics->RenderCylinder(mParticleJ->GetPosition(), mParticleI->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
+	//Looks like a little platform 
+	tubeGraphics->RenderCylinder(mParticleI->GetPosition(), mParticleK->GetPosition(), 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.6f, 0.0f, 0.6f));
+
+
 #pragma endregion
 
 #pragma region SecondBase
-	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleN->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleP->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleQ->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleN->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleP->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleQ->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleN->GetPosition(), mParticleO->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleN->GetPosition(), mParticleR->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleN->GetPosition(), mParticleO->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleN->GetPosition(), mParticleR->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleO->GetPosition(), mParticleP->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleO->GetPosition(), mParticleS->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleO->GetPosition(), mParticleP->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleO->GetPosition(), mParticleS->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	tubeGraphics->RenderCylinder(mParticleP->GetPosition(), mParticleT->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleP->GetPosition(), mParticleT->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 	//A couple cylinders here aren't showing up, for some reason
-	tubeGraphics->RenderCylinder(mParticleQ->GetPosition(), mParticleR->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	tubeGraphics->RenderCylinder(mParticleR->GetPosition(), mParticleS->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleS->GetPosition(), mParticleT->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	tubeGraphics->RenderCylinder(mParticleT->GetPosition(), mParticleQ->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleQ->GetPosition(), mParticleR->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleR->GetPosition(), mParticleS->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	//This 2 cylinders don't render when the particles don't have mass
+	// One starts appearing if I rise the variable of the particles a little bit
+	//TODO: Find out why
+	tubeGraphics->RenderCylinder(mParticleS->GetPosition(), mParticleT->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleT->GetPosition(), mParticleQ->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 #pragma endregion
 }
 
@@ -256,7 +258,7 @@ void cBridgeObject::End()
 		particleWorld->RemoveParticle(mParticles[i]);
 	}
 	//Remove all rods
-	for (size_t i = 0; i < 32; i++)
+	for (size_t i = 0; i < 34; i++)
 	{
 		particleWorld->RemoveContactContactGenerator(mConstraints[i]);
 	}

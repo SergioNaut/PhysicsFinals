@@ -88,8 +88,7 @@ bool StartGraphics()
 	}
 
 #pragma region Textures
-	// Loading textures to use with our meshes
-	// TODO: Add more stuff (metal texture)
+	// Loading textures to use withthe meshes
 	nGraphics::gTextureManager->Load("../Assets/WhiteSquare.bmp", "whiteSquare", false);
 	nGraphics::gTextureManager->Load("../Assets/stone_wall.bmp", "stone", false);
 	nGraphics::gTextureManager->Load("../Assets/grafitti.bmp", "grafitti", false);
@@ -209,10 +208,8 @@ bool StartGraphics()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		//glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
 		glm::set(graphicsDef.Position, 0.0f, 1.0f, -40.0f);
 		glm::set(graphicsDef.Scale, 40.0f, 20.0f, 1.0f);
-		//glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
 		wallGraphics1 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
@@ -221,10 +218,8 @@ bool StartGraphics()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		//glm::set(graphicsDef.Position, -10.0f, 1.0f, 10.0f);
 		glm::set(graphicsDef.Position, -35.0f, 1.0f, 40.0f);
 		glm::set(graphicsDef.Scale, 80.0f, 8.0f, 1.0f);
-		//glm::set(graphicsDef.Scale, 20.0f, 8.0f, 0.1f);
 		wallGraphics2 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 	{
@@ -245,10 +240,8 @@ bool StartGraphics()
 		graphicsDef.Mesh = "box";
 		graphicsDef.TexDiffuse = "bricks";
 		glm::set(graphicsDef.ModelColor, 1.0f, 1.0f, 1.0f, 1.0f);
-		//glm::set(graphicsDef.Position, 10.0f, 1.0f, -10.0f);
 		glm::set(graphicsDef.Position, 40.0f, 1.0f, -40.0f);
 		glm::set(graphicsDef.Scale, 1.0f, 8.0f, 80.0f);
-		//glm::set(graphicsDef.Scale, 0.1f, 8.0f, 20.0f);
 		wallGraphics4 = new nGraphics::cGraphicsComponent(graphicsDef);
 	}
 #pragma region ProjectileModels

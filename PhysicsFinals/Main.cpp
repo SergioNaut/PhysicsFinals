@@ -16,6 +16,7 @@
 //Create a file for all objects
 #include <cBoxObject.h>
 #include <cBridgeObject.h>
+#include <cBallonObject.h>
 
 void mainLoop();
 
@@ -101,8 +102,8 @@ void mainLoop()
 	//Planes have some values commented because I'm using this project to test things for the finals so it has some things from the finals
 
 	//Ground Plane
-	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorG(glm::vec3(0.0f,/*0.2f*/ 1.0f, 0.0f), 1.0f, 1.0f);
-	particleWorld->AddContactContactGenerator(&particleContactGeneratorG);
+	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorGround(glm::vec3(0.0f,/*0.2f*/ 1.0f, 0.0f), 1.0f, 1.0f);
+	particleWorld->AddContactContactGenerator(&particleContactGeneratorGround);
 
 	//Left Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorLeft(glm::vec3(1.0f, 0.f, 0.0f),-40.0f, 1.0f);
@@ -116,10 +117,6 @@ void mainLoop()
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorBack(glm::vec3(0.0f, 0.f, -2.0f),-40.0f, 1.0f);
 	particleWorld->AddContactContactGenerator(&particleContactGeneratorBack);
 
-	//Roof - Nope
-	//nPhysics::cPlaneParticleContactGenerator particleContactGeneratorRoof(glm::vec3(1.0f, 5.f, 0.0f), -5.0f, 1.0f);
-	//world->AddContactContactGenerator(&particleContactGeneratorRoof);
-
 	//Front Wall
 	nPhysics::cPlaneParticleContactGenerator particleContactGeneratorFront(glm::vec3(0.0f, 0.f, 1.0f),-40.0f, 1.0f);
 	particleWorld->AddContactContactGenerator(&particleContactGeneratorFront);
@@ -131,6 +128,9 @@ void mainLoop()
 
 	cBridgeObject* bridge1 = new cBridgeObject();
 	objects.push_back(bridge1);
+
+	cBallonObject* ballons = new cBallonObject();
+	objects.push_back(ballons);
 
 	for (cObject* object : objects)
 	{
@@ -149,10 +149,6 @@ void mainLoop()
 	nInput::cKey* key2 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_2);
 	nInput::cKey* key3 = nInput::cInputManager::GetInstance()->ListenToKey(nInput::KeyCode::KEY_3);
 #pragma endregion
-
-	//Saves which key has been pressed so program knows what projectile to shoot
-		//Super bad
-	int keyHelper = 0;
 
 	while (continueMainLoop)
 	{
@@ -352,21 +348,4 @@ void mainLoop()
 	{
 		delete object;
 	}
-	//for (nPhysics::cParticle* p : particles)
-	//{
-	//	particleWorld->RemoveParticle(p);
-	//	delete p;
-	//}
-	//particles.clear();
-	//// clean up!
-	//delete particleWorld;
 }
-
-//#pragma region Helpers
-//
-//float getRandom(float low, float high)
-//{
-//	return low + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) / (high - low));
-//}
-//
-//#pragma endregion

@@ -127,8 +127,10 @@
       <AdditionalDependencies>glfw3.lib;glew32s.lib;OpenGL32.lib;assimp-vc142-mtd.lib;FreeImaged.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Debug\assimp-vc142-mtd.dll" "$(OutDir)assimp-vc142-mtd.dll"
-copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)FreeImaged.dll"</Command>
+      <Command>
+				copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Debug\assimp-vc142-mtd.dll" "$(OutDir)assimp-vc142-mtd.dll"
+				copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)FreeImaged.dll"
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,8 +150,10 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Debug\FreeImaged.dll" "$(OutDir)
       <AdditionalDependencies>glfw3.lib;glew32s.lib;OPENGL32.lib;assimp-vc142-mt.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Release\assimp-vc142-mt.dll" "$(OutDir)assimp-vc142-mt.dll"
-copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir)FreeImage.dll"</Command>
+      <Command>
+				copy /Y "$(SolutionDir)Extern\Assimp\lib\x64\Release\assimp-vc142-mt.dll" "$(OutDir)assimp-vc142-mt.dll"
+				copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir)FreeImage.dll"
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -159,6 +163,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir
     <None Include="..\Assets\shaders\SimpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cBallonObject.cpp" />
     <ClCompile Include="cBoxObject.cpp" />
     <ClCompile Include="cBridgeObject.cpp" />
     <ClCompile Include="cConfigReader.cpp" />
@@ -195,6 +200,7 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir
     <ClCompile Include="particle_force_generators.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cBallonObject.h" />
     <ClInclude Include="cBoxObject.h" />
     <ClInclude Include="cBridgeObject.h" />
     <ClInclude Include="cConfigReader.h" />
@@ -246,4 +252,26 @@ copy /Y "$(SolutionDir)Extern\FreeImage\lib\x64\Release\FreeImage.dll" "$(OutDir
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <PropertyGroup>
+    <DeploymentFolderName>MyDeploymentFolder</DeploymentFolderName>
+    <ExternFolder>$(ProjectDir)..\Extern\</ExternFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <DeploymentCopyFiles Include="$(ProjectDir)..\$(Platform)\$(Configuration)\$(TargetName)$(TargetExt)">
+    </DeploymentCopyFiles>
+    <DeploymentCopyFiles Include="$(ExternFolder)FreeImage\lib\x64\Release\FreeImage.dll">
+    </DeploymentCopyFiles>
+    <DeploymentCopyFiles Include="$(ExternFolder)assimp\lib\x64\Release\assimp-vc142-mt.dll">
+    </DeploymentCopyFiles>
+  </ItemGroup>
+  <PropertyGroup>
+    <DeploymentPath>$(ProjectDir)$(DeploymentFolderName)</DeploymentPath>
+  </PropertyGroup>
+  <Target Name="CreateDeploymentFolder">
+    <MakeDir Directories="$(DeploymentPath)" />
+  </Target>
+  <Target Name="AfterBuild" DependsOnTargets="CreateDeploymentFolder" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Message Text="This makes a deployment folder" />
+    <Copy SourceFiles="@(DeploymentCopyFiles)" DestinationFolder="$(DeploymentPath)" />
+  </Target>
 </Project>
