@@ -43,6 +43,21 @@ cBridgeObject::cBridgeObject()
 	mParticleL = new nPhysics::cParticle(2.0f, glm::vec3(5.0f, 12.0f, -5.0f));
 	mParticleL->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
 
+	//SECOND MIDDLE BITS
+
+	mParticleU = new nPhysics::cParticle(2.0f, glm::vec3(10.0f, 12.0f, -5.0f));
+	mParticleU->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+
+	mParticleV = new nPhysics::cParticle(2.0f, glm::vec3(10.0f, 12.0f, -10.0f));
+	mParticleV->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+
+	mParticleX = new nPhysics::cParticle(2.0f, glm::vec3(15.0f, 12.0f, -10.0f));
+	mParticleX->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+
+	mParticleY = new nPhysics::cParticle(2.0f, glm::vec3(15.0f, 12.0f, -5.0f));
+	mParticleY->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
+
+
 	//Second Base
 	mParticleM = new nPhysics::cParticle(0.0f, glm::vec3(25.0f, 20.0f, -5.0f));
 	mParticleM->SetAcceleration(glm::vec3(0.0f, -9.8f, 0.0f));
@@ -94,8 +109,9 @@ cBridgeObject::cBridgeObject()
 
 	mConstraintAI = new nPhysics::cParticleCableConstraint(mParticleA, mParticleI);
 	mConstraintDJ = new nPhysics::cParticleCableConstraint(mParticleD, mParticleJ);
-	mConstraintLM = new nPhysics::cParticleCableConstraint(mParticleL, mParticleM);
-	mConstraintKP = new nPhysics::cParticleCableConstraint(mParticleK, mParticleP);
+
+	mConstraintLU = new nPhysics::cParticleCableConstraint(mParticleL, mParticleU);
+	mConstraintKV = new nPhysics::cParticleCableConstraint(mParticleK, mParticleV);
 
 	mConstraintIJ = new nPhysics::cParticleRodConstraint(mParticleI, mParticleJ);
 	mConstraintJK = new nPhysics::cParticleRodConstraint(mParticleJ, mParticleK);
@@ -106,6 +122,21 @@ cBridgeObject::cBridgeObject()
 
 	mConstraintIK = new nPhysics::cParticleRodConstraint(mParticleI, mParticleK);
 	mConstraintJL = new nPhysics::cParticleRodConstraint(mParticleJ, mParticleL);
+
+	//Second Middle bits
+
+	mConstraintYM = new nPhysics::cParticleCableConstraint(mParticleY, mParticleM);
+	mConstraintXN = new nPhysics::cParticleCableConstraint(mParticleX, mParticleN);
+
+	mConstraintUV = new nPhysics::cParticleRodConstraint(mParticleU, mParticleV);
+	mConstraintVX = new nPhysics::cParticleRodConstraint(mParticleV, mParticleX);
+	mConstraintXY = new nPhysics::cParticleRodConstraint(mParticleX, mParticleY);
+	mConstraintYU = new nPhysics::cParticleRodConstraint(mParticleY, mParticleU);
+
+	//EXTRA SUPPORT FOR PLATFORM
+
+	mConstraintUX = new nPhysics::cParticleRodConstraint(mParticleU, mParticleX);
+	mConstraintVY = new nPhysics::cParticleRodConstraint(mParticleY, mParticleY);
 
 
 	//Second Base
@@ -151,12 +182,12 @@ cBridgeObject::cBridgeObject()
 cBridgeObject::~cBridgeObject()
 {
 	//Destroys all particles
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 24; i++)
 	{
 		delete mParticles[i];
 	}
 	//Destroys all rods
-	for (size_t i = 0; i < 34; i++)
+	for (size_t i = 0; i < 42; i++)
 	{
 		delete mConstraints[i];
 	}
@@ -165,12 +196,12 @@ cBridgeObject::~cBridgeObject()
 void cBridgeObject::Begin()
 {
 	//Adds all particles
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 24; i++)
 	{
 		particleWorld->AddParticle(mParticles[i]);
 	}
 	//Adds all rods
-	for (size_t i = 0; i < 34; i++)
+	for (size_t i = 0; i < 42; i++)
 	{
 		particleWorld->AddContactContactGenerator(mConstraints[i]);
 	}
@@ -179,7 +210,7 @@ void cBridgeObject::Begin()
 void cBridgeObject::Render()
 {
 	//Render all particles
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 24; i++)
 	{
 		sphereGraphics->GetVars()->ModelMatrix = glm::translate(glm::mat4(1.0f), mParticles[i]->GetPosition());
 		sphereGraphics->GetVars()->ModelColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -226,6 +257,19 @@ void cBridgeObject::Render()
 
 #pragma endregion
 
+#pragma region SecondMiddleBits
+
+	tubeGraphics->RenderCylinder(mParticleU->GetPosition(), mParticleV->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	tubeGraphics->RenderCylinder(mParticleV->GetPosition(), mParticleX->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleX->GetPosition(), mParticleY->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	tubeGraphics->RenderCylinder(mParticleY->GetPosition(), mParticleU->GetPosition(), 0.3f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+	//Looks like a little platform 
+	tubeGraphics->RenderCylinder(mParticleU->GetPosition(), mParticleX->GetPosition(), 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.6f, 0.0f, 0.6f));
+
+#pragma endregion
+
+
 #pragma region SecondBase
 	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleN->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	tubeGraphics->RenderCylinder(mParticleM->GetPosition(), mParticleP->GetPosition(), 0.8f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -253,12 +297,12 @@ void cBridgeObject::Render()
 void cBridgeObject::End()
 {
 	//Remove all particles
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 24; i++)
 	{
 		particleWorld->RemoveParticle(mParticles[i]);
 	}
 	//Remove all rods
-	for (size_t i = 0; i < 34; i++)
+	for (size_t i = 0; i < 42; i++)
 	{
 		particleWorld->RemoveContactContactGenerator(mConstraints[i]);
 	}

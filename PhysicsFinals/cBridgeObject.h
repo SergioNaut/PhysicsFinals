@@ -29,11 +29,11 @@ public:
 			nPhysics::cParticle* mParticleK;
 			nPhysics::cParticle* mParticleL;
 
-			////Second Middle bit?
-			//nPhysics::cParticle* mParticleT;
-			//nPhysics::cParticle* mParticleU;
-			//nPhysics::cParticle* mParticleV;
-			//nPhysics::cParticle* mParticleX;
+			//Second Middle bit?
+			nPhysics::cParticle* mParticleU;
+			nPhysics::cParticle* mParticleV;
+			nPhysics::cParticle* mParticleX;
+			nPhysics::cParticle* mParticleY;
 			
 			//Second Support
 			nPhysics::cParticle* mParticleM;
@@ -46,7 +46,7 @@ public:
 			nPhysics::cParticle* mParticleT;
 
 		};
-		nPhysics::cParticle* mParticles[20];
+		nPhysics::cParticle* mParticles[24];
 	};
 
 	union
@@ -74,8 +74,6 @@ public:
 			//Middle bit
 			nPhysics::cParticleCableConstraint* mConstraintAI;
 			nPhysics::cParticleCableConstraint* mConstraintDJ;
-			nPhysics::cParticleCableConstraint* mConstraintLM;
-			nPhysics::cParticleCableConstraint* mConstraintKP;
 
 			nPhysics::cParticleRodConstraint* mConstraintIJ;
 			nPhysics::cParticleRodConstraint* mConstraintJK;
@@ -85,6 +83,23 @@ public:
 			nPhysics::cParticleRodConstraint* mConstraintIK;
 			nPhysics::cParticleRodConstraint* mConstraintJL;
 
+
+
+			nPhysics::cParticleCableConstraint* mConstraintLU;
+			nPhysics::cParticleCableConstraint* mConstraintKV;
+
+			//Second Middle Bit
+		
+			nPhysics::cParticleRodConstraint* mConstraintUV;
+			nPhysics::cParticleRodConstraint* mConstraintVX;
+			nPhysics::cParticleRodConstraint* mConstraintXY;
+			nPhysics::cParticleRodConstraint* mConstraintYU;
+
+			nPhysics::cParticleRodConstraint* mConstraintUX;
+			nPhysics::cParticleRodConstraint* mConstraintVY;
+
+			nPhysics::cParticleCableConstraint* mConstraintXN;
+			nPhysics::cParticleCableConstraint* mConstraintYM;
 
 			//Second Support
 			nPhysics::cParticleRodConstraint* mConstraintMN;
@@ -106,7 +121,7 @@ public:
 
 
 		};
-		nPhysics::cParticleRodConstraint* mConstraints[34];
+		nPhysics::cParticleRodConstraint* mConstraints[42];
 	};
 	nGraphics::cGraphicsComponent* mSphereGraphics;
 	nGraphics::cGraphicsComponent* mRodGraphics;
