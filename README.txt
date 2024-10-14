@@ -13,10 +13,6 @@ You can change what model they will have, their mass and radius by changing the 
 
 The objects I created to test physics were a Cube, something that works like ballons, being pushed up but being
 thethered to a point in the ground, and a bridge with 2 platforms.
-The second platform was kinda of a last minute thing so it doesn't show in the video.
-
-I struggled really hard with graphics classes this semester so the graphics programming are similar to what you showed
-in class but I did change some things.
 
 Controls:
 
